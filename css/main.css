@@ -8,7 +8,7 @@
 body {
 	min-height: 720px;
 	min-width: 1280px;
-	background-color: #fff8dc;
+	/*background-color: #4f612d;*/
 }
 
 #leftDiv {
@@ -51,6 +51,26 @@ body {
 
 #mainDiv {
 	width: 68%;
-	height: 631px;
+	height: 650px;
+	display: inline-block;
+	background-color: #4f612d;
+}
+
+.mainComp {
+	background-color: #fff8dc;
+	margin: 20px;
+	height: 610px;
+	width: 940px;
+	padding: 20px;
+	display: none;
+}
+
+#instructions {
 	display: inline-block;
 }
+
+/*
+#footer {
+	background-color: #394f26;
+}
+*/
