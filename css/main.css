@@ -8,7 +8,12 @@
 body {
 	min-height: 720px;
 	min-width: 1280px;
-	/*background-color: #4f612d;*/
+	/*background-color: #394f26;*/
+	background-color: #373927;
+}
+
+#header {
+	height: 70px;
 }
 
 #leftDiv {
@@ -67,11 +72,32 @@ body {
 
 #instructions {
 	display: inline-block;
-	
 }
 
-/*
-#footer {
-	background-color: #394f26;
+#instructions h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: 5px;
 }
-*/
+
+#instructions h2 {
+	font-size: 20px;
+    margin: 5px;
+}
+
+#instructions p {
+	margin: 5px;
+    font-size: 15px;
+}
+
+#instructions button {
+    margin: 25px auto;
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#footer {
+	/**/
+}

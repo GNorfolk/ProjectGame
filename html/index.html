@@ -7,6 +7,9 @@
 	<script type="text/javascript" src="../js/main.js"></script>
 </head>
 <body>
+	<div id="header">
+		<!--  -->
+	</div>
 	<div id="leftDiv">
 		<div id="unitl1" class="unit">
 			<div class="icon"></div><p class="health">100</p>
@@ -34,7 +37,35 @@
 		</div>
 	</div>
 	<div id="mainDiv">
-		<div id="instructions" class="mainComp"></div>
+		<div id="instructions" class="mainComp">
+			<h1>Welcome to my game!</h1>
+			<h2>How it works.</h2>
+			<p>In this game you and your opponent will build an army and engage in combat until one of you emerges victorious.
+			Your armies will comprise eight units of the following unit types: Swordsmen, Bowmen, Spearmen and Horsemen.
+			You will select your units in turns, allowing you to tailor your army to the threat of your opponent.</p>
+			<h2>Army selection.</h2>
+			<p>Player one will get the first choice of unit, after which player two will select two and then player one chooses another two. 
+			You will continue to select two units of your desired unit type until player one chooses their last two, leaving player one to choose their final unit. 
+			Throughout the selection process you will have the choice between Swordsmen, Bowmen, Spearmen and Horsemen which have the bonuses listed below.</p>
+			<h2>Unit combat.</h2>
+			<p>Once units are selected you will go to the combat phase. 
+			Player one will start by selecting their attacks and defences and then commit to their moves, afterwhich player two will do the same.
+			The attacks will then commence and damage will be dealt to the other side.
+			This process will continue in turns until </p>
+			<h2>Unit bonuses.</h2>
+			<p>As said above, some units have advantages over other units. 
+			Swordsmen will get a +50% damage bonus when fighting Spearmen, 
+			Spearmen will get a +100% damage bonus when fighting Horsemen, 
+			and Horsemen will get a +50% damage bonus when fighting both Swordsmen and Bowmen. 
+			Last but not least, Bowmen will get a +100% damage bonus when they are not attacked by another unit, 
+			and a -50% damage penalty when not attacked by another unit.</p>
+			<h2>Other bonuses.</h2>
+			<p>In addition to the unit bonuses, there are also outnumbering and health bonuses and penalties.
+			If an attacker has multiple untis attacking a single target they will get a damage multiplier of n^(1/2) where n is the number of units.
+			If a defender has multiple units defending against enemies they will get a damage multiplier of n^(2/3) where n is the number of units.
+			Lastly, the damage output of a unit will be modified relative to the health of the unit and the average health of any enemies it is fighting.</p>
+			<button>Continue to the game!</button>
+		</div>
 		<div id="unitSelect" class="mainComp"></div>
 		<div id="board" class="mainComp"></div>
 		<div id="stats" class="mainComp"></div>
@@ -65,5 +96,6 @@
 			<div class="icon"></div><p class="health">100</p>
 		</div>
 	</div>
+	<div id="footer"></div>
 </body>
 </html>
