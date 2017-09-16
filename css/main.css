@@ -1,3 +1,5 @@
+/* This is the CSS file for the ProjectGame, below are generic divs for overall webpage usage. */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -12,9 +14,13 @@ body {
 	background-color: #373927;
 }
 
+/* Next is the css for the header and any contents */
+
 #header {
 	height: 70px;
 }
+
+/*  */
 
 #leftDiv {
 	width: 16%;
@@ -67,11 +73,14 @@ body {
 	height: 610px;
 	width: 940px;
 	padding: 20px;
-	display: none;
+}
+
+.mainHidden {
+	display: none !important;
 }
 
 #instructions {
-	display: inline-block;
+	/*display: inline-block;*/
 }
 
 #instructions h1 {
@@ -96,6 +105,57 @@ body {
     font-size: 15px;
     padding: 5px;
     border-radius: 5px;
+}
+
+#unitSelect {
+	padding: 10px;
+}
+
+.divSelect {
+	/*background-color: black;*/
+	height: 390px;
+	width: 440px;
+	margin: 10px;
+}
+
+.divSelect h2 {
+	margin: 10px;
+}
+
+.divSelect p {
+	margin: 10px;
+	position: absolute;
+    bottom: 0;
+}
+
+#topSelect {
+	/*background-color: black;*/
+	height: 160px;
+	width: 900px;
+	margin: 10px;
+}
+
+#topSelect h1 {
+	text-align: center;
+	font-size: 40px;
+}
+
+#topSelect button {
+    margin: 40px auto;
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#leftSelect {
+	float: left;
+	position: relative;
+}
+
+#rightSelect {
+	float: right;
+	position: relative;
 }
 
 #footer {

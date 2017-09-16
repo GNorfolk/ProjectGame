@@ -5,12 +5,15 @@
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<script type="text/javascript" src="../js/main.js"></script>
+	<!-- The above adds in the two css and js files along with a jquery resource -->
 </head>
 <body>
 	<div id="header">
-		<!--  -->
+		<!-- This is left empty as the header is set to be devoid of content -->
 	</div>
-	<div id="leftDiv">
+	<!-- The leftDiv section below is the panel to the left side of the main content of the page
+    	 Each div contained is one of the eight boxes in the panel with unit details -->
+	<div id="leftDiv">	
 		<div id="unitl1" class="unit">
 			<div class="icon"></div><p class="health">100</p>
 		</div>
@@ -35,9 +38,15 @@
 		<div id="unitl8" class="unit">
 			<div class="icon"></div><p class="health">100</p>
 		</div>
+		<!-- Within each unit div is the icon and health value which are both subject to jquery -->
 	</div>
 	<div id="mainDiv">
+		<!-- This is the div for the main content of the webpage, it contains the instructions, unit 
+		selection, attacks, and stats pages. Each of the four divs contained take up the full space
+		of the div and are extended and collapsed in turn.  -->
 		<div id="instructions" class="mainComp">
+			<!-- The below is the contents of the instructions page. Most of the code here is dedicated to
+			the instructions themselves with a good amount of partner code in the CSS file. -->
 			<h1>Welcome to my game!</h1>
 			<h2>How it works.</h2>
 			<p>In this game you and your opponent will build an army and engage in combat until one of you emerges victorious.
@@ -66,10 +75,50 @@
 			Lastly, the damage output of a unit will be modified relative to the health of the unit and the average health of any enemies it is fighting.</p>
 			<button>Continue to the game!</button>
 		</div>
-		<div id="unitSelect" class="mainComp"></div>
-		<div id="board" class="mainComp"></div>
-		<div id="stats" class="mainComp"></div>
+		<div id="unitSelect" class="mainComp mainHidden">
+			<!-- This is the inside of the unit selection div of the main content. It is split up into
+			three sections, the top 'master' selector and two single unit selectors for when players
+			select two units at a time. -->
+			<div id="topSelect">
+				<!-- Here is the top of the selector, it finalises choices made by the players in the 
+				selection process, with a command and the confirm button inside -->
+				<h1>Player one, please select your unit(s).</h1>
+				<button>Confirm selection</button>
+			</div>
+			<div id="leftSelect" class="divSelect">
+				<!-- This is the left selector of the two lower selectors. choices made here will be confirmed
+				and then exported to the left and right panels and to be used in the combat phase -->
+				<h2>This is some text</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+			<div id="rightSelect" class="divSelect">
+				<!-- As described above, this is the right selector which is practically identical to the 
+				left one, as shown by them sharing the divSelect class. -->
+				<h2>This is some text</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+		<!-- The next div is the third div within the main content and is the most important and most
+		seen div of them all. In it players select their attacks and can see the moves of their opponents
+		and themselves. -->
+		<div id="board" class="mainComp mainHidden"></div>
+		<!-- This is the last div of the main content and holds the stats and general info about the state
+		of the last round and board in general. -->
+		<div id="stats" class="mainComp mainHidden"></div>
 	</div>
+	<!-- The below is the div containing the details displayed in the right panel. As with the left
+	panel, it contains eight divs representing the eight units on each team with their icons and 
+	stats contained within. -->
 	<div id="rightDiv">
 		<div id="unitr1" class="unit">
 			<div class="icon"></div><p class="health">100</p>
@@ -95,7 +144,12 @@
 		<div id="unitr8" class="unit">
 			<div class="icon"></div><p class="health">100</p>
 		</div>
+		<!-- Each unit has a unique id so it can be targeted easily as well as an icon and health. 
+		These combined give the user a graphical respresentation of their position in the game. -->
 	</div>
-	<div id="footer"></div>
+	<div id="footer">
+		<!-- This final div is an empty footer with no height allowing it to be used for any additional
+		information. -->
+	</div>
 </body>
 </html>
