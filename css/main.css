@@ -189,18 +189,48 @@ body {
 	float: right;
 }
 
+#stats {
+	padding: 10px;
+}
+
 .divStats {
-	background-color: black;
+	/*background-color: black;*/
 	height: 390px;
 	width: 440px;
 	margin: 10px;
+	text-align: center;
+}
+
+.divStats h2 {
+	margin: 15px;
+}
+
+.divStats p {
+	margin: 15px;
+}
+
+.divStats table {
+	margin: 0 auto;
 }
 
 #topStats {
-	background-color: black;
+	/*background-color: black;*/
 	height: 160px;
 	width: 900px;
 	margin: 10px;
+}
+
+#topStats h1 {
+	text-align: center;
+	font-size: 40px;
+}
+
+#topStats button {
+    margin: 40px auto;
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 #leftStats {

@@ -15,28 +15,28 @@
     	 Each div contained is one of the eight boxes in the panel with unit details -->
 	<div id="leftDiv">	
 		<div id="unitl1" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl2" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl3" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl4" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl5" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl6" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl7" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitl8" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<!-- Within each unit div is the icon and health value which are both subject to jquery -->
 	</div>
@@ -139,9 +139,126 @@
 		<!-- This is the last div of the main content and holds the stats and general info about the state
 		of the last round and board in general. -->
 		<div id="stats" class="mainComp mainHidden">
-			<div id="topStats"></div>
-			<div id="leftStats" class="divStats"></div>
-			<div id="rightStats" class="divStats"></div>
+			<div id="topStats">
+				<h1>These are the results of the battle so far!</h1>
+				<button>Go to the next turn!</button>
+			</div>
+			<div id="leftStats" class="divStats">
+				<h2>Player one statistics.</h2>
+				<p>In the last turn your total damage given was <span>100 damage</span> and your total 
+				damage taken was <span>100 damage</span>. In the whole battle so far your total damage given
+				was <span>400 damage</span> and your total damage taken was <span>400 damage</span>.
+				<br /><br />
+				The detailed results for each unit are shown below:</p>
+				<table>
+					<thead></thead>
+					<tbody>
+						<tr>
+							<th>Given</th>
+							<th>Taken</th>
+							<th>Health</th>
+						</tr>
+						<tr id="row1-1">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-2">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-3">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-4">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-5">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-6">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-7">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row1-8">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="rightStats" class="divStats">
+				<h2>Player two statistics.</h2>
+				<p>In the last turn your total damage given was <span>100 damage</span> and your total 
+				damage taken was <span>100 damage</span>. In the whole battle so far your total damage given
+				was <span>400 damage</span> and your total damage taken was <span>400 damage</span>.
+				<br /><br />
+				The detailed results for each unit are shown below:</p>
+				<table>
+					<thead></thead>
+					<tbody>
+						<tr>
+							<th>Given</th>
+							<th>Taken</th>
+							<th>Health</th>
+						</tr>
+						<tr id="row2-1">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-2">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-3">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-4">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-5">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-6">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-7">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+						<tr id="row2-8">
+							<td>0</td>
+							<td>0</td>
+							<td>100</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<!-- The below is the div containing the details displayed in the right panel. As with the left
@@ -149,28 +266,28 @@
 	stats contained within. -->
 	<div id="rightDiv">
 		<div id="unitr1" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr2" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr3" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr4" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr5" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr6" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr7" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<div id="unitr8" class="unit">
-			<div class="icon"></div><p class="health">100</p>
+			<div class="icon"></div><p class="health">0</p>
 		</div>
 		<!-- Each unit has a unique id so it can be targeted easily as well as an icon and health. 
 		These combined give the user a graphical respresentation of their position in the game. -->
