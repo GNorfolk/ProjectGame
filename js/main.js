@@ -7,8 +7,27 @@ $(function() {
 		$(this).closest('#mainDiv').children('#unitSelect').removeClass('mainHidden');
 	});
 
-	var unitP1Stat = {};
-	var unitP2Stat = {};
+	var unitP1Stat = {
+		unit1: 0,
+		unit2: 0,
+		unit3: 0,
+		unit4: 0,
+		unit5: 0,
+		unit6: 0,
+		unit7: 0,
+		unit8: 0,
+	};
+	var unitP2Stat = {
+		unit1: 0,
+		unit2: 0,
+		unit3: 0,
+		unit4: 0,
+		unit5: 0,
+		unit6: 0,
+		unit7: 0,
+		unit8: 0,
+	};
+
 	var count = 0;
 
 	var startButton = $('#startSelection');
@@ -60,8 +79,11 @@ $(function() {
 				objectAdd(player, unitNumR, unitTypeR);
 			}
 
-			console.log(unitP1Stat);
-			console.log(unitP2Stat);
+			updateUI(unitP1Stat);
+			updateUI(unitP2Stat);
+
+			// console.log(unitP1Stat);
+			// console.log(unitP2Stat);
 
 			count++;
 
@@ -72,55 +94,6 @@ $(function() {
 
 		});
 	});
-
-	// THE BELOW ARE EXAMPLES OF INPUT FROM USER ENTRY
-	// objectAdd('p1', 1, 'swordsmen');
-	// objectAdd('p1', 2, 'horsemen');
-
-	// THE BELOW IS WHAT I WANT MY OBJECTS TO LOOK LIKE AT THE END
-	// var unitP1Stat = {
-	// 	unit1: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit2: {
-	// 		name: '1-2',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit3: {
-	// 		name: '1-3',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit4: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit5: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit6: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit7: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	},
-	// 	unit8: {
-	// 		name: '1-1',
-	// 		type: 'swordsmen',
-	// 		health: 100;
-	// 	}
-	// };
-
 
 	// THE BELOW IS A QUICK WAY TO GET TO THE STATS PAGE FOR DEBUGGING
 	// var selectButton = $('#topSelect button')
@@ -156,5 +129,9 @@ $(function() {
 			console.log('error');
 		}
 	};
+
+	function updateUI(unitStat) {
+		//
+	}
 
 });
