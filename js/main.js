@@ -11,10 +11,12 @@ $(function() {
 	var unitP2Stat = {};
 	var count = 0;
 
-	var startButton = $('#startSelection')
+	var startButton = $('#startSelection');
+	var confirmButton = $('#confirmSelection');
+
 	startButton.on('click', function(event) {
 
-		if (count === 0 || count === 9) {
+		if (count === 0 || count === 8) {
 			$('#rightSelect').addClass('mainHidden');
 			$('#leftSelect').removeClass('mainHidden');
 		} else {
@@ -28,33 +30,47 @@ $(function() {
 			$('#unitSelecth1').text('Player two, please select your unit(s).');
 		}
 
-	});
+		confirmButton.one('click', function(event) {
 
-	var confirmButton = $('#confirmSelection')
-	confirmButton.one('click', function(event) {
+			startButton.text('Next selection');
 
-		var unitType = $("#leftDropDown option:selected").text();
-		
-		var player;
-		if ((count % 2) === 0) {
-			player = 'p1';
-		} else if ((count % 2) === 1) {
-			player = 'p2';
-		}
+			var unitTypeL = $("#leftDropDown option:selected").text();
+			var unitTypeR = $("#rightDropDown option:selected").text();
+			
+			var player;
+			if ((count % 2) === 0) {
+				player = 'p1';
+			} else if ((count % 2) === 1) {
+				player = 'p2';
+			}
 
-		if (count === 0) {
-			unitNum = 1;
-		}
+			var unitNumL;
+			var unitNumR = count + 1;
 
-		objectAdd(player, unitNum, unitType);
+			if (count === 0) {
+				unitNumL = 1;
+			} else {
+				unitNumL = count;
+			}
 
-		console.log(unitP1Stat);
+			if (count === 0 || count === 8) {
+				objectAdd(player, unitNumL, unitTypeL);
+			} else {
+				objectAdd(player, unitNumL, unitTypeL);
+				objectAdd(player, unitNumR, unitTypeR);
+			}
 
-		if (count === 10) {
-			$(this).closest('#unitSelect').addClass('mainHidden');
-			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
-		}
+			console.log(unitP1Stat);
+			console.log(unitP2Stat);
 
+			count++;
+
+			if (count === 9) {
+				$(this).closest('#unitSelect').addClass('mainHidden');
+				$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
+			}
+
+		});
 	});
 
 	// THE BELOW ARE EXAMPLES OF INPUT FROM USER ENTRY
