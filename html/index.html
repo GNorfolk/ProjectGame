@@ -82,14 +82,17 @@
 			<div id="topSelect">
 				<!-- Here is the top of the selector, it finalises choices made by the players in the 
 				selection process, with a command and the confirm button inside -->
-				<h1>Player one, please select your unit(s).</h1>
-				<button>Confirm selection</button>
+				<h1 id="unitSelecth1">Players, please select your unit(s).</h1>
+				<div id="buttonSelect">
+					<button id="startSelection">Start selection</button>
+					<button id="confirmSelection">Confirm selection</button>
+				</div>
 			</div>
-			<div id="leftSelect" class="divSelect">
+			<div id="leftSelect" class="divSelect mainHidden">
 				<!-- This is the left selector of the two lower selectors. choices made here will be confirmed
 				and then exported to the left and right panels and to be used in the combat phase -->
 				<h2>Please select your first unit.</h2>
-				<select>
+				<select id="leftDropDown">
 					<option value="" disabled="disabled" selected="selected">Please select a unit</option>
 					<option value="1">Swordsmen</option>
 					<option value="2">Bowmen</option>
@@ -106,7 +109,7 @@
 				Last but not least, Bowmen get a +100% damage bonus when they are not attacked by another unit, 
 				and a -50% damage penalty when not attacked by another unit.</p>
 			</div>
-			<div id="rightSelect" class="divSelect">
+			<div id="rightSelect" class="divSelect mainHidden">
 				<!-- As described above, this is the right selector which is practically identical to the 
 				left one, as shown by them sharing the divSelect class. -->
 				<h2>Please select your second unit.</h2>

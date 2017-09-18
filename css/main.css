@@ -149,9 +149,13 @@ body {
 	font-size: 40px;
 }
 
+#buttonSelect {
+	margin: 0 310px;
+}
+
 #topSelect button {
-    margin: 40px auto;
-    display: block;
+    margin: 40px 5px;
+    display: inline-block;
     font-size: 15px;
     padding: 5px;
     border-radius: 5px;
