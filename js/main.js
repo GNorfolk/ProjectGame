@@ -94,6 +94,46 @@ $(function() {
 		});
 	});
 
+	$('#topBoard button').on('click', function() {
+		
+		
+
+		$('#1a').val();
+		$('#1b').val();
+		$('#2a').val();
+		$('#2b').val();
+		$('#3a').val();
+		$('#3b').val();
+		$('#4a').val();
+		$('#4b').val();
+		$('#5a').val();
+		$('#5b').val();
+		$('#6a').val();
+		$('#6b').val();
+		$('#7a').val();
+		$('#7b').val();
+		$('#8a').val();
+		$('#8b').val();
+
+		$('#1a').val('');
+		$('#2a').val('');
+		$('#3a').val('');
+		$('#4a').val('');
+		$('#5a').val('');
+		$('#6a').val('');
+		$('#7a').val('');
+		$('#8a').val('');
+		$('#1b').val('');
+		$('#2b').val('');
+		$('#3b').val('');
+		$('#4b').val('');
+		$('#5b').val('');
+		$('#6b').val('');
+		$('#7b').val('');
+		$('#8b').val('');
+
+	});
+
 	
 
 	// THE BELOW IS A QUICK WAY TO GET TO THE STATS PAGE FOR DEBUGGING
