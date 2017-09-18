@@ -35,6 +35,9 @@ $(function() {
 
 	startButton.on('click', function(event) {
 
+		$('#leftDropDown').val('');
+		$('#rightDropDown').val('');
+
 		if (count === 0 || count === 8) {
 			$('#rightSelect').addClass('mainHidden');
 			$('#leftSelect').removeClass('mainHidden');
@@ -85,11 +88,13 @@ $(function() {
 
 			if (count === 9) {
 				$(this).closest('#unitSelect').addClass('mainHidden');
-				$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
+				$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
 			}
 
 		});
 	});
+
+	
 
 	// THE BELOW IS A QUICK WAY TO GET TO THE STATS PAGE FOR DEBUGGING
 	// var selectButton = $('#topSelect button')
