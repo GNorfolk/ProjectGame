@@ -9,6 +9,39 @@ $(function() {
 
 	var unitP1Stat = {};
 	var unitP2Stat = {};
+	var count = 0;
+
+	function objectAdd(player, unitNum, unitType) {
+		if (player === 'p1') {
+			var string = 'unit' + unitNum;
+			var varName = '1-' + unitNum;
+			unitP1Stat[string] = {
+				name: varName,
+				type: unitType,
+				health: 100
+			}
+		} else if (player === 'p2') {
+			var string = 'unit' + unitNum;
+			var varName = '2-' + unitNum;
+			unitP2Stat[string] = {
+				name: varName,
+				type: unitType,
+				health: 100
+			}
+		} else {
+			console.log('error');
+		}
+	};
+
+	console.log(unitP1Stat);
+
+	objectAdd('p1', 1, 'swordsmen');
+
+	console.log(unitP1Stat);
+
+	objectAdd('p1', 2, 'horsemen');
+
+	console.log(unitP1Stat);
 
 	// var unitP1Stat = {
 	// 	unit1: {
