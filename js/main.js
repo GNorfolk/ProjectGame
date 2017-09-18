@@ -79,11 +79,7 @@ $(function() {
 				objectAdd(player, unitNumR, unitTypeR);
 			}
 
-			updateUI(unitP1Stat);
-			updateUI(unitP2Stat);
-
-			// console.log(unitP1Stat);
-			// console.log(unitP2Stat);
+			updateHealth(unitP1Stat, unitP2Stat);
 
 			count++;
 
@@ -130,8 +126,24 @@ $(function() {
 		}
 	};
 
-	function updateUI(unitStat) {
-		//
+	function updateHealth(unitStatL, unitStatR) {
+		$('#unitl1 p').text(unitP1Stat.unit1.health);
+		$('#unitl2 p').text(unitP1Stat.unit2.health);
+		$('#unitl3 p').text(unitP1Stat.unit3.health);
+		$('#unitl4 p').text(unitP1Stat.unit4.health);
+		$('#unitl5 p').text(unitP1Stat.unit5.health);
+		$('#unitl6 p').text(unitP1Stat.unit6.health);
+		$('#unitl7 p').text(unitP1Stat.unit7.health);
+		$('#unitl8 p').text(unitP1Stat.unit8.health);
+
+		$('#unitr1 p').text(unitP2Stat.unit1.health);
+		$('#unitr2 p').text(unitP2Stat.unit2.health);
+		$('#unitr3 p').text(unitP2Stat.unit3.health);
+		$('#unitr4 p').text(unitP2Stat.unit4.health);
+		$('#unitr5 p').text(unitP2Stat.unit5.health);
+		$('#unitr6 p').text(unitP2Stat.unit6.health);
+		$('#unitr7 p').text(unitP2Stat.unit7.health);
+		$('#unitr8 p').text(unitP2Stat.unit8.health);
 	}
 
 });

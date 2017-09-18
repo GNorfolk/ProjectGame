@@ -6,7 +6,7 @@
 ~~Add boilerplate for selection comp~~
 ~~Add boilerplate for statistics and results~~
 ~~Add object model js for unit stats~~
-Add selection js click events
+~~Add selection js click events~~
 Add basic boilerplate for attacks
 Add icons for different unit types
 Update styling for stats
