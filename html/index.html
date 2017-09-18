@@ -88,18 +88,27 @@
 			<div id="leftSelect" class="divSelect">
 				<!-- This is the left selector of the two lower selectors. choices made here will be confirmed
 				and then exported to the left and right panels and to be used in the combat phase -->
-				<h2>This is some text</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<h2>Please select your first unit.</h2>
+				<select>
+					<option value="" disabled="disabled" selected="selected">Please select a unit</option>
+					<option value="1">Swordsmen</option>
+					<option value="2">Bowmen</option>
+					<option value="3">Spearmen</option>
+					<option value="4">Horsemen</option>
+				</select>
+				<p>This is where you select your units for battle. </p>
 			</div>
 			<div id="rightSelect" class="divSelect">
 				<!-- As described above, this is the right selector which is practically identical to the 
 				left one, as shown by them sharing the divSelect class. -->
-				<h2>This is some text</h2>
+				<h2>Please select your second unit.</h2>
+				<select>
+					<option value="" disabled="disabled" selected="selected">Please select a unit</option>
+					<option value="1">Swordsmen</option>
+					<option value="2">Bowmen</option>
+					<option value="3">Spearmen</option>
+					<option value="4">Horsemen</option>
+				</select>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -111,10 +120,18 @@
 		<!-- The next div is the third div within the main content and is the most important and most
 		seen div of them all. In it players select their attacks and can see the moves of their opponents
 		and themselves. -->
-		<div id="board" class="mainComp mainHidden"></div>
+		<div id="board" class="mainComp mainHidden">
+			<div id="topBoard"></div>
+			<div id="leftBoard" class="divBoard"></div>
+			<div id="rightBoard" class="divBoard"></div>
+		</div>
 		<!-- This is the last div of the main content and holds the stats and general info about the state
 		of the last round and board in general. -->
-		<div id="stats" class="mainComp mainHidden"></div>
+		<div id="stats" class="mainComp mainHidden">
+			<div id="topStats"></div>
+			<div id="leftStats" class="divStats"></div>
+			<div id="rightStats" class="divStats"></div>
+		</div>
 	</div>
 	<!-- The below is the div containing the details displayed in the right panel. As with the left
 	panel, it contains eight divs representing the eight units on each team with their icons and 

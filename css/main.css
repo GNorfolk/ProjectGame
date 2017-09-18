@@ -9,7 +9,7 @@
 
 body {
 	min-height: 720px;
-	min-width: 1280px;
+	min-width: 1440px;
 	/*background-color: #394f26;*/
 	background-color: #373927;
 }
@@ -23,7 +23,7 @@ body {
 /*  */
 
 #leftDiv {
-	width: 16%;
+	width: 230px;
 	height: 100%;
 	float: left;
 	display: inline-block;
@@ -31,7 +31,7 @@ body {
 }
 
 #rightDiv {
-	width: 16%;
+	width: 230px;
 	height: 100%;
 	float: right;
 	display: inline-block;
@@ -61,7 +61,7 @@ body {
 }
 
 #mainDiv {
-	width: 68%;
+	width: 980px;
 	height: 650px;
 	display: inline-block;
 	background-color: #4f612d;
@@ -120,6 +120,15 @@ body {
 
 .divSelect h2 {
 	margin: 10px;
+	text-align: center;
+}
+
+.divSelect select {
+	margin: 40px auto;
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .divSelect p {
@@ -156,6 +165,50 @@ body {
 #rightSelect {
 	float: right;
 	position: relative;
+}
+
+.divBoard {
+	background-color: black;
+	height: 390px;
+	width: 440px;
+	margin: 10px;
+}
+
+#topBoard {
+	background-color: black;
+	height: 160px;
+	width: 900px;
+	margin: 10px;
+}
+
+#leftBoard {
+	float: left;
+}
+
+#rightBoard {
+	float: right;
+}
+
+.divStats {
+	background-color: black;
+	height: 390px;
+	width: 440px;
+	margin: 10px;
+}
+
+#topStats {
+	background-color: black;
+	height: 160px;
+	width: 900px;
+	margin: 10px;
+}
+
+#leftStats {
+	float: left;
+}
+
+#rightStats {
+	float: right;
 }
 
 #footer {
