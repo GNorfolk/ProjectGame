@@ -1,11 +1,11 @@
 $(function() {
 	
 	var instrButton = $('#instructions button')
-	instrButton.on('click', function(event) {
-		//console.log('button working');
-		$(this).closest('#instructions').addClass('mainHidden');
-		$(this).closest('#mainDiv').children('#unitSelect').removeClass('mainHidden');
-	});
+
+	var count = 0;
+
+	var startButton = $('#startSelection');
+	var confirmButton = $('#confirmSelection');
 
 	var unitStat = {
 		player1: {
@@ -30,11 +30,21 @@ $(function() {
 		}
 	}
 
+	var battleMoves = {
+		player1: [],
+		player2: []
+	};
+	var counter = 0;
 
-	var count = 0;
+	var turn = 0;
 
-	var startButton = $('#startSelection');
-	var confirmButton = $('#confirmSelection');
+	var targetArray = [];
+
+	instrButton.on('click', function(event) {
+		//console.log('button working');
+		$(this).closest('#instructions').addClass('mainHidden');
+		$(this).closest('#mainDiv').children('#unitSelect').removeClass('mainHidden');
+	});
 
 	startButton.on('click', function(event) {
 
@@ -97,12 +107,6 @@ $(function() {
 		});
 	});
 
-	var battleMoves = {
-		player1: [],
-		player2: []
-	};
-	var counter = 0;
-
 	$('#topBoard button').on('click', function(event) {
 		if (counter === 0) {
 			battleMoves['player1'] = [
@@ -130,7 +134,7 @@ $(function() {
 			$(this).closest('#board').addClass('mainHidden');
 			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
 
-			combatCalc();
+			combatCalc(unitStat, battleMoves);
 
 		} else {
 			console.log('error');
@@ -157,8 +161,6 @@ $(function() {
 
 	});
 
-	var turn = 0;
-
 	$('#topStats button').on('click', function(event) {
 		count = 0;
 		counter = 0;
@@ -166,16 +168,6 @@ $(function() {
 		$(this).closest('#stats').addClass('mainHidden');
 		$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
 	});
-
-	
-
-	// THE BELOW IS A QUICK WAY TO GET TO THE STATS PAGE FOR DEBUGGING
-	// var selectButton = $('#topSelect button')
-	// selectButton.on('click', function(event) {
-	// 	console.log('Second button working');
-	// 	$(this).closest('#unitSelect').addClass('mainHidden');
-	// 	$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
-	// })
 
 	// ************************************************************************
 	// put all functions below this line just for ease of use and all that jazz
@@ -224,8 +216,74 @@ $(function() {
 		$('#unitr8 p').text(unitStat.player2.unit8.health);
 	}
 
-	function combatCalc() {
+	function combatCalc(stat, moves) {
+		console.log('combat init');
 
+		moves = ifAttacked(moves);
+
+		// var varFocus = focus(moves);
+		return stat;
 	}
 
+	function ifAttacked(moves) {
+		
+		targetArray = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+		
+		for (var i = 0; i < 8; i++) {
+			if (moves.player1[i][0] === '1') {
+				targetArray[1][moves.player1[i][1]]++;
+			}
+		}
+		for (var i = 0; i < 8; i++) {
+			if (moves.player2[i][0] === '1') {
+				targetArray[0][moves.player2[i][1]]++;
+			}
+		}
+
+		return moves;
+	}
+
+	// function ifSupported(moves) {
+
+	// 	supportArray = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
+	// 	for (var i = 0; i < 8; i++) {
+	// 		if (moves.player2[i][0] === '2') {
+	// 			supportArray[0][moves.player1[i][1]]
+	// 		}
+	// 	}
+	// }
+
+	// function focus(moves) {
+	// 	// console.log(moves);
+	// 	// var myArray =  [[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+	// 	// 				[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]];
+	// 	//myArray[i][j] = [0,0];
+	// 	// i is player and j is unit id
+
+
+
+	// 	for (var i = 0; i < 0; i++) {
+	// 		for (var j = 0; j < 0; j++) {
+	// 			//
+	// 		}
+	// 	}
+
+	// 	// console.log(myArray);
+
+	// 	return myArray;
+	// }
+
 });
+
+
+
+
+
+
+
+
+
+
+
+

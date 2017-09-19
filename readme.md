@@ -1,24 +1,34 @@
 **Project steps:**
 
-~~Add unit type interaction mechanics~~
+~~Create basic page structure~~
 
-~~Add mechanic calculations~~
+~~Create and style side panels~~
 
-~~Add boilerplate for instruction main component~~
+~~Create and add general page styling~~
 
-~~Add boilerplate for selection comp~~
+~~Devise unit type interaction mechanics~~
 
-~~Add boilerplate for statistics and results~~
+~~Devise mechanic calculations~~
+
+~~Add layout styling for instruction main component~~
+
+~~Add layout styling for selection comp~~
+
+~~Add layout styling for statistics and results~~
 
 ~~Add object model js for unit stats~~
 
 ~~Add selection js click events~~
 
-~~Add basic boilerplate for attacks~~
+~~Add basic layout styling for attacks~~
 
 ~~Add repeating turn mechanics~~
 
 Add combat effect mechanics
+
+Add unit death
+
+Add end of game 
 
 **My MVP is complete as the core mechanics exist**
 
@@ -55,7 +65,7 @@ bowmen		-50% 	if attacked
 
 mechanic calculations:
 
-dmg = std(10) * yourHealth/enmyHealth * dmgMultiplier * outnumMultiplier
+dmg = std(12) * yourHealth * dmgMultiplier * outnumMultiplier
 
 outnumMultiplier is the bonus from multiple attacks
 
