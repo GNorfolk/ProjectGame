@@ -7,26 +7,29 @@ $(function() {
 		$(this).closest('#mainDiv').children('#unitSelect').removeClass('mainHidden');
 	});
 
-	var unitP1Stat = {
-		unit1: 0,
-		unit2: 0,
-		unit3: 0,
-		unit4: 0,
-		unit5: 0,
-		unit6: 0,
-		unit7: 0,
-		unit8: 0,
-	};
-	var unitP2Stat = {
-		unit1: 0,
-		unit2: 0,
-		unit3: 0,
-		unit4: 0,
-		unit5: 0,
-		unit6: 0,
-		unit7: 0,
-		unit8: 0,
-	};
+	var unitStat = {
+		player1: {
+			unit1: 0,
+			unit2: 0,
+			unit3: 0,
+			unit4: 0,
+			unit5: 0,
+			unit6: 0,
+			unit7: 0,
+			unit8: 0,
+		},
+		player2: {
+			unit1: 0,
+			unit2: 0,
+			unit3: 0,
+			unit4: 0,
+			unit5: 0,
+			unit6: 0,
+			unit7: 0,
+			unit8: 0,
+		}
+	}
+
 
 	var count = 0;
 
@@ -82,7 +85,7 @@ $(function() {
 				objectAdd(player, unitNumR, unitTypeR);
 			}
 
-			updateHealth(unitP1Stat, unitP2Stat);
+			updateHealth(unitStat);
 
 			count++;
 
@@ -126,6 +129,8 @@ $(function() {
 
 			$(this).closest('#board').addClass('mainHidden');
 			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
+
+			combatCalc();
 
 		} else {
 			console.log('error');
@@ -181,7 +186,7 @@ $(function() {
 		if (player === 'p1') {
 			var string = 'unit' + unitNum;
 			var varName = '1-' + unitNum;
-			unitP1Stat[string] = {
+			unitStat.player1[string] = {
 				name: varName,
 				type: unitType,
 				health: 100
@@ -189,7 +194,7 @@ $(function() {
 		} else if (player === 'p2') {
 			var string = 'unit' + unitNum;
 			var varName = '2-' + unitNum;
-			unitP2Stat[string] = {
+			unitStat.player2[string] = {
 				name: varName,
 				type: unitType,
 				health: 100
@@ -200,23 +205,27 @@ $(function() {
 	};
 
 	function updateHealth(unitStatL, unitStatR) {
-		$('#unitl1 p').text(unitP1Stat.unit1.health);
-		$('#unitl2 p').text(unitP1Stat.unit2.health);
-		$('#unitl3 p').text(unitP1Stat.unit3.health);
-		$('#unitl4 p').text(unitP1Stat.unit4.health);
-		$('#unitl5 p').text(unitP1Stat.unit5.health);
-		$('#unitl6 p').text(unitP1Stat.unit6.health);
-		$('#unitl7 p').text(unitP1Stat.unit7.health);
-		$('#unitl8 p').text(unitP1Stat.unit8.health);
+		$('#unitl1 p').text(unitStat.player1.unit1.health);
+		$('#unitl2 p').text(unitStat.player1.unit2.health);
+		$('#unitl3 p').text(unitStat.player1.unit3.health);
+		$('#unitl4 p').text(unitStat.player1.unit4.health);
+		$('#unitl5 p').text(unitStat.player1.unit5.health);
+		$('#unitl6 p').text(unitStat.player1.unit6.health);
+		$('#unitl7 p').text(unitStat.player1.unit7.health);
+		$('#unitl8 p').text(unitStat.player1.unit8.health);
 
-		$('#unitr1 p').text(unitP2Stat.unit1.health);
-		$('#unitr2 p').text(unitP2Stat.unit2.health);
-		$('#unitr3 p').text(unitP2Stat.unit3.health);
-		$('#unitr4 p').text(unitP2Stat.unit4.health);
-		$('#unitr5 p').text(unitP2Stat.unit5.health);
-		$('#unitr6 p').text(unitP2Stat.unit6.health);
-		$('#unitr7 p').text(unitP2Stat.unit7.health);
-		$('#unitr8 p').text(unitP2Stat.unit8.health);
+		$('#unitr1 p').text(unitStat.player2.unit1.health);
+		$('#unitr2 p').text(unitStat.player2.unit2.health);
+		$('#unitr3 p').text(unitStat.player2.unit3.health);
+		$('#unitr4 p').text(unitStat.player2.unit4.health);
+		$('#unitr5 p').text(unitStat.player2.unit5.health);
+		$('#unitr6 p').text(unitStat.player2.unit6.health);
+		$('#unitr7 p').text(unitStat.player2.unit7.health);
+		$('#unitr8 p').text(unitStat.player2.unit8.health);
+	}
+
+	function combatCalc() {
+
 	}
 
 });

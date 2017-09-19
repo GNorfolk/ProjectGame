@@ -20,9 +20,21 @@
 
 Add combat effect mechanics
 
+**My MVP is complete as the core mechanics exist**
+
+Add stats non-select error and repeat
+
+Add confirmation of confirmation button click (change list to text)
+
 Add icons for different unit types
 
-Update styling for stats
+Add player names for board page
+
+Add confirm move animation
+
+Add show moves page within stats 
+
+Upgrade combat page
 
 ------------------------------------------------------------------
 
