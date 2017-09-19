@@ -152,6 +152,16 @@ $(function() {
 
 	});
 
+	var turn = 0;
+
+	$('#topStats button').on('click', function(event) {
+		count = 0;
+		counter = 0;
+		turn++;
+		$(this).closest('#stats').addClass('mainHidden');
+		$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
+	});
+
 	
 
 	// THE BELOW IS A QUICK WAY TO GET TO THE STATS PAGE FOR DEBUGGING
