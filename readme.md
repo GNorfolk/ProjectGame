@@ -30,6 +30,8 @@ Add unit death
 
 Add end of game 
 
+Add show moves page within stats 
+
 **My MVP is complete as the core mechanics exist**
 
 Add stats non-select error and repeat
@@ -42,9 +44,9 @@ Add player names for board page
 
 Add confirm move animation
 
-Add show moves page within stats 
-
 Upgrade combat page
+
+Add total given on stats page
 
 ------------------------------------------------------------------
 
