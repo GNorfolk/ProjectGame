@@ -94,26 +94,44 @@ $(function() {
 		});
 	});
 
-	$('#topBoard button').on('click', function() {
-		
-		
+	var battleMoves = {
+		player1: [],
+		player2: []
+	};
+	var counter = 0;
 
-		$('#1a').val();
-		$('#1b').val();
-		$('#2a').val();
-		$('#2b').val();
-		$('#3a').val();
-		$('#3b').val();
-		$('#4a').val();
-		$('#4b').val();
-		$('#5a').val();
-		$('#5b').val();
-		$('#6a').val();
-		$('#6b').val();
-		$('#7a').val();
-		$('#7b').val();
-		$('#8a').val();
-		$('#8b').val();
+	$('#topBoard button').on('click', function(event) {
+		if (counter === 0) {
+			battleMoves['player1'] = [
+				[$('#1a').val(),$('#1b').val()],
+				[$('#2a').val(),$('#2b').val()],
+				[$('#3a').val(),$('#3b').val()],
+				[$('#4a').val(),$('#4b').val()],
+				[$('#5a').val(),$('#5b').val()],
+				[$('#6a').val(),$('#6b').val()],
+				[$('#7a').val(),$('#7b').val()],
+				[$('#8a').val(),$('#8b').val()]
+			];
+		} else if (counter === 1) {
+			battleMoves['player2'] = [
+				[$('#1a').val(),$('#1b').val()],
+				[$('#2a').val(),$('#2b').val()],
+				[$('#3a').val(),$('#3b').val()],
+				[$('#4a').val(),$('#4b').val()],
+				[$('#5a').val(),$('#5b').val()],
+				[$('#6a').val(),$('#6b').val()],
+				[$('#7a').val(),$('#7b').val()],
+				[$('#8a').val(),$('#8b').val()]
+			];
+
+			$(this).closest('#board').addClass('mainHidden');
+			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
+
+		} else {
+			console.log('error');
+		}
+
+		counter++;
 
 		$('#1a').val('');
 		$('#2a').val('');
