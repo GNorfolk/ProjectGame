@@ -222,8 +222,29 @@ $(function() {
 		// units attacked lose support actions and creates array(s) for later use
 		moves = ifAttacked(moves);
 
-		var array = 
+		var baseDmg = [[[],[],[],[],[],[],[],[]],[[],[],[],[],[],[],[],[]]]
 
+		// baseDmg[0][i] = 12 * stat.player1[i].health / targetArray[0][i] / 100;
+		// baseDmg[1][i] = 12 * stat.player2[i].health / targetArray[1][i] / 100;
+
+		baseDmg[0][0] = 12 * stat.player1.unit1.health / targetArray[0][0] / 100;
+		baseDmg[0][1] = 12 * stat.player1.unit2.health / targetArray[0][1] / 100;
+		baseDmg[0][2] = 12 * stat.player1.unit3.health / targetArray[0][2] / 100;
+		baseDmg[0][3] = 12 * stat.player1.unit4.health / targetArray[0][3] / 100;
+		baseDmg[0][4] = 12 * stat.player1.unit5.health / targetArray[0][4] / 100;
+		baseDmg[0][5] = 12 * stat.player1.unit6.health / targetArray[0][5] / 100;
+		baseDmg[0][6] = 12 * stat.player1.unit7.health / targetArray[0][6] / 100;
+		baseDmg[0][7] = 12 * stat.player1.unit8.health / targetArray[0][7] / 100;
+		baseDmg[1][0] = 12 * stat.player2.unit1.health / targetArray[1][0] / 100;
+		baseDmg[1][1] = 12 * stat.player2.unit2.health / targetArray[1][1] / 100;
+		baseDmg[1][2] = 12 * stat.player2.unit3.health / targetArray[1][2] / 100;
+		baseDmg[1][3] = 12 * stat.player2.unit4.health / targetArray[1][3] / 100;
+		baseDmg[1][4] = 12 * stat.player2.unit5.health / targetArray[1][4] / 100;
+		baseDmg[1][5] = 12 * stat.player2.unit6.health / targetArray[1][5] / 100;
+		baseDmg[1][6] = 12 * stat.player2.unit7.health / targetArray[1][6] / 100;
+		baseDmg[1][7] = 12 * stat.player2.unit8.health / targetArray[1][7] / 100;
+
+		console.log(moves);
 		// who
 		// how much dmg to each
 
@@ -238,6 +259,8 @@ $(function() {
 		// so ie tA[0][i] cycles through all p1 units
 		targetArray = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 		
+		// This adds one to defending unit's number of targets that its damage
+		// is spread across:
 		// cycles through 0 to 7
 		for (var i = 0; i < 8; i++) {
 			// if player1 unit i type of move = attack(1)
@@ -256,6 +279,7 @@ $(function() {
 			}
 		}
 
+		// this blocks any support moves if the unit is attacked.
 		// cycles 0 though 7
 		for (var i = 0; i < 8; i++) {
 			// if unit i of p1 hit > 0 and p1 unit i type of attack = support(2)
@@ -268,6 +292,42 @@ $(function() {
 			// if unit i of p2 hit > 0 and p2 unit i type of attack = support(2)
 			if (targetArray[1][i] > 0 && moves.player2[i][0] === 2) {
 				moves.player2[i] = [0,0]
+			}
+		}
+
+		// if unit is supporting another unit then we add the number of units attacking
+		// the defending unit since its damage will be spread over those too
+		for (var i = 0; i < 8; i++) {
+			// if player1 unit i type of move = attack(1)
+			if (moves.player1[i][0] === 2) {
+				// add the value of the target array for the supported unit
+				// targetArray[0] is just p1 and the rest is the id of the supported unit
+				targetArray[0][i] += targetArray[0][moves.player1[i][1]];
+			}
+		}
+		for (var i = 0; i < 8; i++) {
+			// if player2 unit i type of move = attack(1)
+			if (moves.player2[i][0] === 2) {
+				// add the value of the target array for the supported unit
+				// targetArray[1] is just p2 and the rest is the id of the supported unit
+				targetArray[1][i] += targetArray[1][moves.player2[i][1]];;
+			}
+		}
+
+		// if unit is attacking something then add one to the number of targets
+		// its damage is spread over.
+		for (var i = 0; i < 8; i++) {
+			// if player1 unit i type of move = attack(1)
+			if (moves.player1[i][0] === 1) {
+				// add one to number of targets of that unit ie unit i of p1
+				targetArray[0][i]++;
+			}
+		}
+		for (var i = 0; i < 8; i++) {
+			// if player2 unit i type of move = attack(1)
+			if (moves.player2[i][0] === 1) {
+				// add one to number of targets of that unit ie unit i of p2
+				targetArray[1][i]++;
 			}
 		}
 
