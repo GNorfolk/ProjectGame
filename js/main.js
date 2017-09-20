@@ -176,6 +176,7 @@ $(function() {
 
 			unitStat = combatCalc(unitStat, battleMoves);
 			updateHealth2dp(unitStat);
+			hideDead(unitStat);
 
 		} else {
 			console.log('error');
@@ -320,11 +321,6 @@ $(function() {
 			}
 		}
 
-		console.log(moves);
-		// console.log(baseDmg);
-		console.log(targetArray);
-		console.log(dmgTaken);
-
 		stat.player1.unit1.health -= dmgTaken[0][0];
 		stat.player1.unit2.health -= dmgTaken[0][1];
 		stat.player1.unit3.health -= dmgTaken[0][2];
@@ -429,22 +425,76 @@ $(function() {
 	}
 
 	function hideDead(stat) {
-		stat.player1.unit1.health;
-		stat.player1.unit2.health;
-		stat.player1.unit3.health;
-		stat.player1.unit4.health;
-		stat.player1.unit5.health;
-		stat.player1.unit6.health;
-		stat.player1.unit7.health;
-		stat.player1.unit8.health;
-		stat.player2.unit1.health;
-		stat.player2.unit2.health;
-		stat.player2.unit3.health;
-		stat.player2.unit4.health;
-		stat.player2.unit5.health;
-		stat.player2.unit6.health;
-		stat.player2.unit7.health;
-		stat.player2.unit8.health;
+		if (stat.player1.unit1.health < 0) {
+			$('#unitl1').addClass('invisible');
+		}
+		if (stat.player1.unit2.health < 0) {
+			$('#unitl2').addClass('invisible');
+		}
+		if (stat.player1.unit3.health < 0) {
+			$('#unitl3').addClass('invisible');
+		}
+		if (stat.player1.unit4.health < 0) {
+			$('#unitl4').addClass('invisible');
+		}
+		if (stat.player1.unit5.health < 0) {
+			$('#unitl5').addClass('invisible');
+		}
+		if (stat.player1.unit6.health < 0) {
+			$('#unitl6').addClass('invisible');
+		}
+		if (stat.player1.unit7.health < 0) {
+			$('#unitl7').addClass('invisible');
+		}
+		if (stat.player1.unit8.health < 0) {
+			$('#unitl8').addClass('invisible');
+		}
+		if (stat.player2.unit1.health < 0) {
+			$('#unitr1').addClass('invisible');
+		}
+		if (stat.player2.unit2.health < 0) {
+			$('#unitr2').addClass('invisible');
+		}
+		if (stat.player2.unit3.health < 0) {
+			$('#unitr3').addClass('invisible');
+		}
+		if (stat.player2.unit4.health < 0) {
+			$('#unitr4').addClass('invisible');
+		}
+		if (stat.player2.unit5.health < 0) {
+			$('#unitr5').addClass('invisible');
+		}
+		if (stat.player2.unit6.health < 0) {
+			$('#unitr6').addClass('invisible');
+		}
+		if (stat.player2.unit7.health < 0) {
+			$('#unitr7').addClass('invisible');
+		}
+		if (stat.player2.unit8.health < 0) {
+			$('#unitr8').addClass('invisible');
+		}
+
+	}
+
+	function deadMoves(moves) {
+		//
 	}
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
