@@ -36,11 +36,13 @@
 
 ~~Add confirmation of confirmation button click (change list to text)~~
 
-	Add stats non-select error and repeat
+~~Add dynamics to stat~~
 
-	Add dynamics to stat
+~~Add total given on stats page~~
 
-	Add total given on stats page
+	Add stats non-select error
+
+	Add tpye non-select error
 
 	Add icons for different unit types
 

@@ -42,6 +42,8 @@ $(function() {
 
 	var dmgGivenTotal = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 	var dmgTakenTotal = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+	var dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+	var dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
 	/////////////////////////////////////////////////////////////////////////////////////////
 
@@ -140,22 +142,22 @@ $(function() {
 				[parseInt($('#8a').val()),parseInt($('#8b').val())]
 			];
 
-			// $('#1a').val('');
-			// $('#2a').val('');
-			// $('#3a').val('');
-			// $('#4a').val('');
-			// $('#5a').val('');
-			// $('#6a').val('');
-			// $('#7a').val('');
-			// $('#8a').val('');
-			// $('#1b').val('');
-			// $('#2b').val('');
-			// $('#3b').val('');
-			// $('#4b').val('');
-			// $('#5b').val('');
-			// $('#6b').val('');
-			// $('#7b').val('');
-			// $('#8b').val('');
+			$('#1a').val('');
+			$('#2a').val('');
+			$('#3a').val('');
+			$('#4a').val('');
+			$('#5a').val('');
+			$('#6a').val('');
+			$('#7a').val('');
+			$('#8a').val('');
+			$('#1b').val('');
+			$('#2b').val('');
+			$('#3b').val('');
+			$('#4b').val('');
+			$('#5b').val('');
+			$('#6b').val('');
+			$('#7b').val('');
+			$('#8b').val('');
 
 		} else if (counter === 1) {
 
@@ -172,22 +174,22 @@ $(function() {
 				[parseInt($('#8a').val()),parseInt($('#8b').val())]
 			];
 
-			// $('#1a').val('');
-			// $('#2a').val('');
-			// $('#3a').val('');
-			// $('#4a').val('');
-			// $('#5a').val('');
-			// $('#6a').val('');
-			// $('#7a').val('');
-			// $('#8a').val('');
-			// $('#1b').val('');
-			// $('#2b').val('');
-			// $('#3b').val('');
-			// $('#4b').val('');
-			// $('#5b').val('');
-			// $('#6b').val('');
-			// $('#7b').val('');
-			// $('#8b').val('');
+			$('#1a').val('');
+			$('#2a').val('');
+			$('#3a').val('');
+			$('#4a').val('');
+			$('#5a').val('');
+			$('#6a').val('');
+			$('#7a').val('');
+			$('#8a').val('');
+			$('#1b').val('');
+			$('#2b').val('');
+			$('#3b').val('');
+			$('#4b').val('');
+			$('#5b').val('');
+			$('#6b').val('');
+			$('#7b').val('');
+			$('#8b').val('');
 
 			$(this).closest('#board').addClass('mainHidden');
 			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
@@ -195,6 +197,7 @@ $(function() {
 			unitStat = combatCalc(unitStat, battleMoves);
 			updateHealth2dp(unitStat);
 			hideDead(unitStat);
+			updateStats(); // updates stat page with new information
 			if (ifEnd(unitStat) !== false) {
 
 			}
@@ -317,8 +320,8 @@ $(function() {
 		// moves.player1[unit number][0] for move type
 		// moves.player1[unit number][1] for move target
 
-		var dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
-		var dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+		dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+		dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
 		// This adds all damage to two arrays declared above that tally damage given and received
 		// one 2-line code adds damage going outwards and the other adds the return
@@ -529,6 +532,83 @@ $(function() {
 		} else {
 			return false;
 		}
+	}
+
+	function updateStats() {
+
+		for (var i = 0; i < 2; i++) {
+			for (var j = 0; j < 8; j++) {
+				dmgGivenTotal[i][j] += dmgGiven[i][j];
+			}
+		}
+
+		$('#leftStats .row1 .col1').text(dmgGiven[0][0].toFixed());
+		$('#leftStats .row2 .col1').text(dmgGiven[0][1].toFixed());
+		$('#leftStats .row3 .col1').text(dmgGiven[0][2].toFixed());
+		$('#leftStats .row4 .col1').text(dmgGiven[0][3].toFixed());
+		$('#leftStats .row5 .col1').text(dmgGiven[0][4].toFixed());
+		$('#leftStats .row6 .col1').text(dmgGiven[0][5].toFixed());
+		$('#leftStats .row7 .col1').text(dmgGiven[0][6].toFixed());
+		$('#leftStats .row8 .col1').text(dmgGiven[0][7].toFixed());
+		$('#rightStats .row1 .col1').text(dmgGiven[1][0].toFixed());
+		$('#rightStats .row2 .col1').text(dmgGiven[1][1].toFixed());
+		$('#rightStats .row3 .col1').text(dmgGiven[1][2].toFixed());
+		$('#rightStats .row4 .col1').text(dmgGiven[1][3].toFixed());
+		$('#rightStats .row5 .col1').text(dmgGiven[1][4].toFixed());
+		$('#rightStats .row6 .col1').text(dmgGiven[1][5].toFixed());
+		$('#rightStats .row7 .col1').text(dmgGiven[1][6].toFixed());
+		$('#rightStats .row8 .col1').text(dmgGiven[1][7].toFixed());
+
+		$('#leftStats .row1 .col2').text(dmgTaken[0][0].toFixed());
+		$('#leftStats .row2 .col2').text(dmgTaken[0][1].toFixed());
+		$('#leftStats .row3 .col2').text(dmgTaken[0][2].toFixed());
+		$('#leftStats .row4 .col2').text(dmgTaken[0][3].toFixed());
+		$('#leftStats .row5 .col2').text(dmgTaken[0][4].toFixed());
+		$('#leftStats .row6 .col2').text(dmgTaken[0][5].toFixed());
+		$('#leftStats .row7 .col2').text(dmgTaken[0][6].toFixed());
+		$('#leftStats .row8 .col2').text(dmgTaken[0][7].toFixed());
+		$('#rightStats .row1 .col2').text(dmgTaken[1][0].toFixed());
+		$('#rightStats .row2 .col2').text(dmgTaken[1][1].toFixed());
+		$('#rightStats .row3 .col2').text(dmgTaken[1][2].toFixed());
+		$('#rightStats .row4 .col2').text(dmgTaken[1][3].toFixed());
+		$('#rightStats .row5 .col2').text(dmgTaken[1][4].toFixed());
+		$('#rightStats .row6 .col2').text(dmgTaken[1][5].toFixed());
+		$('#rightStats .row7 .col2').text(dmgTaken[1][6].toFixed());
+		$('#rightStats .row8 .col2').text(dmgTaken[1][7].toFixed());
+
+		$('#leftStats .row1 .col3').text(dmgGivenTotal[0][0].toFixed());
+		$('#leftStats .row2 .col3').text(dmgGivenTotal[0][1].toFixed());
+		$('#leftStats .row3 .col3').text(dmgGivenTotal[0][2].toFixed());
+		$('#leftStats .row4 .col3').text(dmgGivenTotal[0][3].toFixed());
+		$('#leftStats .row5 .col3').text(dmgGivenTotal[0][4].toFixed());
+		$('#leftStats .row6 .col3').text(dmgGivenTotal[0][5].toFixed());
+		$('#leftStats .row7 .col3').text(dmgGivenTotal[0][6].toFixed());
+		$('#leftStats .row8 .col3').text(dmgGivenTotal[0][7].toFixed());
+		$('#rightStats .row1 .col3').text(dmgGivenTotal[1][0].toFixed());
+		$('#rightStats .row2 .col3').text(dmgGivenTotal[1][1].toFixed());
+		$('#rightStats .row3 .col3').text(dmgGivenTotal[1][2].toFixed());
+		$('#rightStats .row4 .col3').text(dmgGivenTotal[1][3].toFixed());
+		$('#rightStats .row5 .col3').text(dmgGivenTotal[1][4].toFixed());
+		$('#rightStats .row6 .col3').text(dmgGivenTotal[1][5].toFixed());
+		$('#rightStats .row7 .col3').text(dmgGivenTotal[1][6].toFixed());
+		$('#rightStats .row8 .col3').text(dmgGivenTotal[1][7].toFixed());
+
+		$('#leftStats .row1 .col4').text(100 - unitStat.player1.unit1.health.toFixed());
+		$('#leftStats .row2 .col4').text(100 - unitStat.player1.unit2.health.toFixed());
+		$('#leftStats .row3 .col4').text(100 - unitStat.player1.unit3.health.toFixed());
+		$('#leftStats .row4 .col4').text(100 - unitStat.player1.unit4.health.toFixed());
+		$('#leftStats .row5 .col4').text(100 - unitStat.player1.unit5.health.toFixed());
+		$('#leftStats .row6 .col4').text(100 - unitStat.player1.unit6.health.toFixed());
+		$('#leftStats .row7 .col4').text(100 - unitStat.player1.unit7.health.toFixed());
+		$('#leftStats .row8 .col4').text(100 - unitStat.player1.unit8.health.toFixed());
+		$('#rightStats .row1 .col4').text(100 - unitStat.player2.unit1.health.toFixed());
+		$('#rightStats .row2 .col4').text(100 - unitStat.player2.unit2.health.toFixed());
+		$('#rightStats .row3 .col4').text(100 - unitStat.player2.unit3.health.toFixed());
+		$('#rightStats .row4 .col4').text(100 - unitStat.player2.unit4.health.toFixed());
+		$('#rightStats .row5 .col4').text(100 - unitStat.player2.unit5.health.toFixed());
+		$('#rightStats .row6 .col4').text(100 - unitStat.player2.unit6.health.toFixed());
+		$('#rightStats .row7 .col4').text(100 - unitStat.player2.unit7.health.toFixed());
+		$('#rightStats .row8 .col4').text(100 - unitStat.player2.unit8.health.toFixed());
 	}
 
 });
