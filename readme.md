@@ -24,7 +24,7 @@
 
 ~~Add repeating turn mechanics~~
 
-Add combat effect mechanics
+~~Add basic combat effect mechanics~~
 
 Add unit death
 
@@ -33,6 +33,8 @@ Add end of game
 Add show moves page within stats 
 
 **My MVP is complete as the core mechanics exist**
+
+Add more dynamic combat effects
 
 Add stats non-select error and repeat
 
@@ -45,6 +47,8 @@ Add player names for board page
 Add confirm move animation
 
 Upgrade combat page
+
+Add dynamics to stat
 
 Add total given on stats page
 

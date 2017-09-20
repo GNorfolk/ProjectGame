@@ -175,13 +175,11 @@ $(function() {
 			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
 
 			unitStat = combatCalc(unitStat, battleMoves);
-			updateHealth();
+			updateHealth2dp(unitStat);
 
 		} else {
 			console.log('error');
 		}
-
-
 
 		counter++;
 
@@ -222,7 +220,7 @@ $(function() {
 		}
 	};
 
-	function updateHealth(unitStatL, unitStatR) {
+	function updateHealth(unitStat) {
 		$('#unitl1 p').text(unitStat.player1.unit1.health);
 		$('#unitl2 p').text(unitStat.player1.unit2.health);
 		$('#unitl3 p').text(unitStat.player1.unit3.health);
@@ -240,6 +238,26 @@ $(function() {
 		$('#unitr6 p').text(unitStat.player2.unit6.health);
 		$('#unitr7 p').text(unitStat.player2.unit7.health);
 		$('#unitr8 p').text(unitStat.player2.unit8.health);
+	}
+
+	function updateHealth2dp(unitStat) {
+		$('#unitl1 p').text(unitStat.player1.unit1.health.toFixed());
+		$('#unitl2 p').text(unitStat.player1.unit2.health.toFixed());
+		$('#unitl3 p').text(unitStat.player1.unit3.health.toFixed());
+		$('#unitl4 p').text(unitStat.player1.unit4.health.toFixed());
+		$('#unitl5 p').text(unitStat.player1.unit5.health.toFixed());
+		$('#unitl6 p').text(unitStat.player1.unit6.health.toFixed());
+		$('#unitl7 p').text(unitStat.player1.unit7.health.toFixed());
+		$('#unitl8 p').text(unitStat.player1.unit8.health.toFixed());
+
+		$('#unitr1 p').text(unitStat.player2.unit1.health.toFixed());
+		$('#unitr2 p').text(unitStat.player2.unit2.health.toFixed());
+		$('#unitr3 p').text(unitStat.player2.unit3.health.toFixed());
+		$('#unitr4 p').text(unitStat.player2.unit4.health.toFixed());
+		$('#unitr5 p').text(unitStat.player2.unit5.health.toFixed());
+		$('#unitr6 p').text(unitStat.player2.unit6.health.toFixed());
+		$('#unitr7 p').text(unitStat.player2.unit7.health.toFixed());
+		$('#unitr8 p').text(unitStat.player2.unit8.health.toFixed());
 	}
 
 	function combatCalc(stat, moves) {
@@ -268,8 +286,6 @@ $(function() {
 		baseDmg[1][6] = 12 * stat.player2.unit7.health / targetArray[1][6] / 100;
 		baseDmg[1][7] = 12 * stat.player2.unit8.health / targetArray[1][7] / 100;
 
-		console.log(moves);
-
 		// moves.player1[unit number][0] for move type
 		// moves.player1[unit number][1] for move target
 
@@ -284,11 +300,11 @@ $(function() {
 				// the damage dealt in this one interations is added to dmg given by unit i of p1 
 				dmgGiven[0][i] += baseDmg[0][i];
 				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]];
+				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i];
 
 				// this is the return damage, same as above
 				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]];
-				dmgTaken[0][i] += baseDmg[0][i];
+				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]];
 			}
 			// this is the second loop that does the same thing for player 2's units
 			// if unit i of p2 is attacking:
@@ -296,13 +312,18 @@ $(function() {
 				// the damage dealt in this one interations is added to dmg given by unit i of p2 
 				dmgGiven[1][i] += baseDmg[1][i];
 				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]];
+				dmgTaken[0][moves.player2[i][1]] += baseDmg[1][i];
 
 				// this is the return damage, same as above
 				dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]];
-				dmgTaken[1][i] += baseDmg[1][i];
+				dmgTaken[1][i] += baseDmg[0][moves.player2[i][1]];
 			}
 		}
+
+		console.log(moves);
+		// console.log(baseDmg);
+		console.log(targetArray);
+		console.log(dmgTaken);
 
 		stat.player1.unit1.health -= dmgTaken[0][0];
 		stat.player1.unit2.health -= dmgTaken[0][1];
@@ -357,14 +378,14 @@ $(function() {
 		for (var i = 0; i < 8; i++) {
 			// if unit i of p1 hit > 0 and p1 unit i type of attack = support(2)
 			if (targetArray[0][i] > 0 && moves.player1[i][0] === 2) {
-				moves.player1[i] = [0,0]
+				moves.player1[i] = [-1,-1]
 			}
 		}
 		// cycles 0 though 7
 		for (var i = 0; i < 8; i++) {
 			// if unit i of p2 hit > 0 and p2 unit i type of attack = support(2)
 			if (targetArray[1][i] > 0 && moves.player2[i][0] === 2) {
-				moves.player2[i] = [0,0]
+				moves.player2[i] = [-1,-1]
 			}
 		}
 
@@ -405,6 +426,25 @@ $(function() {
 		}
 
 		return moves;
+	}
+
+	function hideDead(stat) {
+		stat.player1.unit1.health;
+		stat.player1.unit2.health;
+		stat.player1.unit3.health;
+		stat.player1.unit4.health;
+		stat.player1.unit5.health;
+		stat.player1.unit6.health;
+		stat.player1.unit7.health;
+		stat.player1.unit8.health;
+		stat.player2.unit1.health;
+		stat.player2.unit2.health;
+		stat.player2.unit3.health;
+		stat.player2.unit4.health;
+		stat.player2.unit5.health;
+		stat.player2.unit6.health;
+		stat.player2.unit7.health;
+		stat.player2.unit8.health;
 	}
 
 });
