@@ -40,21 +40,17 @@
 
 ~~Add total given on stats page~~
 
+~~Add icons for different unit types~~
+
 	Add stats non-select error
 
 	Add tpye non-select error
-
-	Add icons for different unit types
 
 	Add can't attack or be attacked when dead
 
 Upgrade combat page
 
 Add better step calculations
-
-Add confirm move animation???
-
-Add show moves page within stats???
 
 ------------------------------------------------------------------
 

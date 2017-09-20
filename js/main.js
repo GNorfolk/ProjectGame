@@ -113,6 +113,7 @@ $(function() {
 			}
 
 			updateHealth(unitStat);
+			updateImg(unitStat);
 
 			count++;
 
@@ -610,6 +611,92 @@ $(function() {
 		$('#rightStats .row7 .col4').text(100 - unitStat.player2.unit7.health.toFixed());
 		$('#rightStats .row8 .col4').text(100 - unitStat.player2.unit8.health.toFixed());
 	}
+
+	function updateImg(stat) {
+
+		for (var i = 1; i < 9; i++) {
+
+			var unitImg;
+			var string = '#unitl' + i;
+			var string2 = string + ' p';
+			var string3 = string + ' div';
+
+			$(string2).text();
+			if ($(string2).text() == 100) {
+
+				if (i === 1) {
+					unitImg = stat.player1.unit1.type;
+				} else if (i === 2) {
+					unitImg = stat.player1.unit2.type;
+				} else if (i === 3) {
+					unitImg = stat.player1.unit3.type;
+				} else if (i === 4) {
+					unitImg = stat.player1.unit4.type;
+				} else if (i === 5) {
+					unitImg = stat.player1.unit5.type;
+				} else if (i === 6) {
+					unitImg = stat.player1.unit6.type;
+				} else if (i === 7) {
+					unitImg = stat.player1.unit7.type;
+				} else if (i === 8) {
+					unitImg = stat.player1.unit8.type;
+				} else {
+					unitImg = 'default';
+				}
+
+				$(string3).html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+			}
+
+			var string = '#unitr' + i;
+			var string2 = string + ' p';
+			var string3 = string + ' div';
+
+			$(string2).text();
+			if ($(string2).text() == 100) {
+
+				if (i === 1) {
+					unitImg = stat.player2.unit1.type;
+				} else if (i === 2) {
+					unitImg = stat.player2.unit2.type;
+				} else if (i === 3) {
+					unitImg = stat.player2.unit3.type;
+				} else if (i === 4) {
+					unitImg = stat.player2.unit4.type;
+				} else if (i === 5) {
+					unitImg = stat.player2.unit5.type;
+				} else if (i === 6) {
+					unitImg = stat.player2.unit6.type;
+				} else if (i === 7) {
+					unitImg = stat.player2.unit7.type;
+				} else if (i === 8) {
+					unitImg = stat.player2.unit8.type;
+				} else {
+					unitImg = 'default';
+				}
+
+				$(string3).html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+			}
+		}
+		
+
+		// $('#unitl1 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl2 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl3 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl4 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl5 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl6 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl7 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitl8 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+
+		// $('#unitr1 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr2 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr3 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr4 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr5 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr6 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr7 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		// $('#unitr8 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+		}
 
 });
 

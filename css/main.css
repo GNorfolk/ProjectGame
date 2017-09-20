@@ -53,6 +53,13 @@ body {
 	display: inline-block;
 }
 
+.iconImg {
+	height: 50px;
+	width: 50px;
+	float: left;
+	display: inline-block;
+}
+
 .health	{
 	display: inline-block;
 	margin: 10px;
