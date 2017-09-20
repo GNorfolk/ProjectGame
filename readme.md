@@ -34,9 +34,9 @@
 
 ~~Add player names for board page~~
 
-	Add stats non-select error and repeat
+~~Add confirmation of confirmation button click (change list to text)~~
 
-	Add confirmation of confirmation button click (change list to text)
+	Add stats non-select error and repeat
 
 	Add dynamics to stat
 

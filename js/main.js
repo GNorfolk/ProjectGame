@@ -52,8 +52,13 @@ $(function() {
 
 	startButton.on('click', function(event) {
 
-		// $('#leftDropDown').val('');
-		// $('#rightDropDown').val('');
+		$('#leftDropDown').val('');
+		$('#rightDropDown').val('');
+
+		startButton.addClass('invisible');
+		confirmButton.removeClass('invisible');
+		$('.divSelect select').removeClass('mainHidden');
+		$('.divSelect h3').addClass('mainHidden');
 
 		if (count === 0 || count === 8) {
 			$('#rightSelect').addClass('mainHidden');
@@ -70,6 +75,12 @@ $(function() {
 		}
 
 		confirmButton.one('click', function(event) {
+
+			startButton.removeClass('invisible');
+			confirmButton.addClass('invisible');
+
+			$('.divSelect select').addClass('mainHidden');
+			$('.divSelect h3').removeClass('mainHidden');
 
 			startButton.text('Next selection');
 
