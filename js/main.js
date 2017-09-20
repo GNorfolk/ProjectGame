@@ -40,16 +40,20 @@ $(function() {
 
 	var targetArray = [];
 
+	var dmgGivenTotal = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+	var dmgTakenTotal = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
+	/////////////////////////////////////////////////////////////////////////////////////////
+
 	instrButton.on('click', function(event) {
-		//console.log('button working');
 		$(this).closest('#instructions').addClass('mainHidden');
 		$(this).closest('#mainDiv').children('#unitSelect').removeClass('mainHidden');
 	});
 
 	startButton.on('click', function(event) {
 
-		$('#leftDropDown').val('');
-		$('#rightDropDown').val('');
+		// $('#leftDropDown').val('');
+		// $('#rightDropDown').val('');
 
 		if (count === 0 || count === 8) {
 			$('#rightSelect').addClass('mainHidden');
@@ -108,6 +112,7 @@ $(function() {
 	});
 
 	$('#topBoard button').on('click', function(event) {
+
 		if (counter === 0) {
 			battleMoves['player1'] = [
 				[parseInt($('#1a').val()),parseInt($('#1b').val())],
@@ -119,6 +124,24 @@ $(function() {
 				[parseInt($('#7a').val()),parseInt($('#7b').val())],
 				[parseInt($('#8a').val()),parseInt($('#8b').val())]
 			];
+
+			// $('#1a').val('');
+			// $('#2a').val('');
+			// $('#3a').val('');
+			// $('#4a').val('');
+			// $('#5a').val('');
+			// $('#6a').val('');
+			// $('#7a').val('');
+			// $('#8a').val('');
+			// $('#1b').val('');
+			// $('#2b').val('');
+			// $('#3b').val('');
+			// $('#4b').val('');
+			// $('#5b').val('');
+			// $('#6b').val('');
+			// $('#7b').val('');
+			// $('#8b').val('');
+
 		} else if (counter === 1) {
 			battleMoves['player2'] = [
 				[parseInt($('#1a').val()),parseInt($('#1b').val())],
@@ -131,6 +154,23 @@ $(function() {
 				[parseInt($('#8a').val()),parseInt($('#8b').val())]
 			];
 
+			// $('#1a').val('');
+			// $('#2a').val('');
+			// $('#3a').val('');
+			// $('#4a').val('');
+			// $('#5a').val('');
+			// $('#6a').val('');
+			// $('#7a').val('');
+			// $('#8a').val('');
+			// $('#1b').val('');
+			// $('#2b').val('');
+			// $('#3b').val('');
+			// $('#4b').val('');
+			// $('#5b').val('');
+			// $('#6b').val('');
+			// $('#7b').val('');
+			// $('#8b').val('');
+
 			$(this).closest('#board').addClass('mainHidden');
 			$(this).closest('#mainDiv').children('#stats').removeClass('mainHidden');
 
@@ -141,24 +181,9 @@ $(function() {
 			console.log('error');
 		}
 
-		counter++;
 
-		$('#1a').val('');
-		$('#2a').val('');
-		$('#3a').val('');
-		$('#4a').val('');
-		$('#5a').val('');
-		$('#6a').val('');
-		$('#7a').val('');
-		$('#8a').val('');
-		$('#1b').val('');
-		$('#2b').val('');
-		$('#3b').val('');
-		$('#4b').val('');
-		$('#5b').val('');
-		$('#6b').val('');
-		$('#7b').val('');
-		$('#8b').val('');
+
+		counter++;
 
 	});
 
@@ -226,7 +251,6 @@ $(function() {
 
 		// baseDmg[0][i] = 12 * stat.player1[i].health / targetArray[0][i] / 100;
 		// baseDmg[1][i] = 12 * stat.player2[i].health / targetArray[1][i] / 100;
-
 		baseDmg[0][0] = 12 * stat.player1.unit1.health / targetArray[0][0] / 100;
 		baseDmg[0][1] = 12 * stat.player1.unit2.health / targetArray[0][1] / 100;
 		baseDmg[0][2] = 12 * stat.player1.unit3.health / targetArray[0][2] / 100;
@@ -245,8 +269,57 @@ $(function() {
 		baseDmg[1][7] = 12 * stat.player2.unit8.health / targetArray[1][7] / 100;
 
 		console.log(moves);
-		// who
-		// how much dmg to each
+
+		// moves.player1[unit number][0] for move type
+		// moves.player1[unit number][1] for move target
+
+		var dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+		var dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
+		// This adds all damage to two arrays declared above that tally damage given and received
+		// one 2-line code adds damage going outwards and the other adds the return
+		for (var i = 0; i < 8; i++) {
+			// if unit i of p1 is attacking:
+			if (moves.player1[i][0] === 1) {
+				// the damage dealt in this one interations is added to dmg given by unit i of p1 
+				dmgGiven[0][i] += baseDmg[0][i];
+				// the dmg in this interation is added to that taken by target unit
+				dmgTaken[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]];
+
+				// this is the return damage, same as above
+				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]];
+				dmgTaken[0][i] += baseDmg[0][i];
+			}
+			// this is the second loop that does the same thing for player 2's units
+			// if unit i of p2 is attacking:
+			if (moves.player2[i][0] === 1) {
+				// the damage dealt in this one interations is added to dmg given by unit i of p2 
+				dmgGiven[1][i] += baseDmg[1][i];
+				// the dmg in this interation is added to that taken by target unit
+				dmgTaken[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]];
+
+				// this is the return damage, same as above
+				dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]];
+				dmgTaken[1][i] += baseDmg[1][i];
+			}
+		}
+
+		stat.player1.unit1.health -= dmgTaken[0][0];
+		stat.player1.unit2.health -= dmgTaken[0][1];
+		stat.player1.unit3.health -= dmgTaken[0][2];
+		stat.player1.unit4.health -= dmgTaken[0][3];
+		stat.player1.unit5.health -= dmgTaken[0][4];
+		stat.player1.unit6.health -= dmgTaken[0][5];
+		stat.player1.unit7.health -= dmgTaken[0][6];
+		stat.player1.unit8.health -= dmgTaken[0][7];
+		stat.player2.unit1.health -= dmgTaken[1][0];
+		stat.player2.unit2.health -= dmgTaken[1][1];
+		stat.player2.unit3.health -= dmgTaken[1][2];
+		stat.player2.unit4.health -= dmgTaken[1][3];
+		stat.player2.unit5.health -= dmgTaken[1][4];
+		stat.player2.unit6.health -= dmgTaken[1][5];
+		stat.player2.unit7.health -= dmgTaken[1][6];
+		stat.player2.unit8.health -= dmgTaken[1][7];
 
 		// returns the new stats of the units
 		return stat;
@@ -335,46 +408,3 @@ $(function() {
 	}
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
