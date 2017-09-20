@@ -143,6 +143,12 @@ $(function() {
 
 	$('#topBoard button').on('click', function(event) {
 
+		$('#topBoard button').hide()
+
+		setTimeout(function() {
+			$('#topBoard button').show();
+		}, 1000);
+
 		$('#topBoard h1').text('Player two, you may now engage in combat!');
 
 		if (counter === 0) {

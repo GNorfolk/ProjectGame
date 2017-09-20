@@ -44,7 +44,7 @@
 
 ~~Add type non-select error~~
 
-	Add stats non-select error
+~~Add board confirm move delay~~
 
 	Add can't attack or be attacked when dead
 
