@@ -42,9 +42,9 @@
 
 ~~Add icons for different unit types~~
 
-	Add stats non-select error
+~~Add type non-select error~~
 
-	Add tpye non-select error
+	Add stats non-select error
 
 	Add can't attack or be attacked when dead
 

@@ -115,6 +115,21 @@ $(function() {
 			updateHealth(unitStat);
 			updateImg(unitStat);
 
+			if (count === 0 || count === 8) {
+				if (unitTypeL === 'Please select a unit') {
+					count--;
+					alert('Invalid input! Please try again.')
+				}
+			} else if (count > 0 && count < 8) {
+				if (unitTypeR === 'Please select a unit' || 
+					unitTypeL === 'Please select a unit') {
+						count--;
+						alert('Invalid input! Please try again.')
+				}
+			} else {
+				console.log('error');
+			}
+
 			count++;
 
 			if (count === 9) {
@@ -677,26 +692,7 @@ $(function() {
 				$(string3).html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
 			}
 		}
-		
-
-		// $('#unitl1 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl2 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl3 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl4 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl5 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl6 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl7 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitl8 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-
-		// $('#unitr1 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr2 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr3 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr4 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr5 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr6 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr7 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		// $('#unitr8 div').html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
-		}
+	}	
 
 });
 
