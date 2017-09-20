@@ -32,27 +32,27 @@
 
 **My MVP is complete as the core mechanics exist**
 
-Add show moves page within stats???
+~~Add player names for board page~~
 
-Add more dynamic combat effects
+	Add stats non-select error and repeat
 
-Add 
+	Add confirmation of confirmation button click (change list to text)
 
-Add stats non-select error and repeat
+	Add dynamics to stat
 
-Add confirmation of confirmation button click (change list to text)
+	Add total given on stats page
 
-Add icons for different unit types
+	Add icons for different unit types
 
-Add player names for board page
-
-Add confirm move animation
+	Add can't attack or be attacked when dead
 
 Upgrade combat page
 
-Add dynamics to stat
+Add better step calculations
 
-Add total given on stats page
+Add confirm move animation???
+
+Add show moves page within stats???
 
 ------------------------------------------------------------------
 

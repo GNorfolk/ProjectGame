@@ -106,6 +106,7 @@ $(function() {
 			if (count === 9) {
 				$(this).closest('#unitSelect').addClass('mainHidden');
 				$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
+				$('#topBoard h1').text('Player one, you may now engage in combat!');
 			}
 
 		});
@@ -113,7 +114,10 @@ $(function() {
 
 	$('#topBoard button').on('click', function(event) {
 
+		$('#topBoard h1').text('Player two, you may now engage in combat!');
+
 		if (counter === 0) {
+
 			battleMoves['player1'] = [
 				[parseInt($('#1a').val()),parseInt($('#1b').val())],
 				[parseInt($('#2a').val()),parseInt($('#2b').val())],
@@ -143,6 +147,9 @@ $(function() {
 			// $('#8b').val('');
 
 		} else if (counter === 1) {
+
+			$('#topBoard h1').text('Player one, you may now engage in combat!');
+
 			battleMoves['player2'] = [
 				[parseInt($('#1a').val()),parseInt($('#1b').val())],
 				[parseInt($('#2a').val()),parseInt($('#2b').val())],
