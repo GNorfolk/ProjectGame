@@ -177,6 +177,9 @@ $(function() {
 			unitStat = combatCalc(unitStat, battleMoves);
 			updateHealth2dp(unitStat);
 			hideDead(unitStat);
+			if (ifEnd(unitStat) !== false) {
+
+			}
 
 		} else {
 			console.log('error');
@@ -187,11 +190,17 @@ $(function() {
 	});
 
 	$('#topStats button').on('click', function(event) {
-		count = 0;
-		counter = 0;
-		turn++;
-		$(this).closest('#stats').addClass('mainHidden');
-		$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
+		if (!ifEnd(unitStat)) {
+			count = 0;
+			counter = 0;
+			turn++;
+			$(this).closest('#stats').addClass('mainHidden');
+			$(this).closest('#mainDiv').children('#board').removeClass('mainHidden');
+		} else if (ifEnd(unitStat) === 'p1') {
+			alert('Player one wins the game!');
+		} else if (ifEnd(unitStat) === 'p2') {
+			alert('Player two wins the game!');
+		}
 	});
 
 	// ************************************************************************
@@ -270,22 +279,22 @@ $(function() {
 
 		// baseDmg[0][i] = 12 * stat.player1[i].health / targetArray[0][i] / 100;
 		// baseDmg[1][i] = 12 * stat.player2[i].health / targetArray[1][i] / 100;
-		baseDmg[0][0] = 12 * stat.player1.unit1.health / targetArray[0][0] / 100;
-		baseDmg[0][1] = 12 * stat.player1.unit2.health / targetArray[0][1] / 100;
-		baseDmg[0][2] = 12 * stat.player1.unit3.health / targetArray[0][2] / 100;
-		baseDmg[0][3] = 12 * stat.player1.unit4.health / targetArray[0][3] / 100;
-		baseDmg[0][4] = 12 * stat.player1.unit5.health / targetArray[0][4] / 100;
-		baseDmg[0][5] = 12 * stat.player1.unit6.health / targetArray[0][5] / 100;
-		baseDmg[0][6] = 12 * stat.player1.unit7.health / targetArray[0][6] / 100;
-		baseDmg[0][7] = 12 * stat.player1.unit8.health / targetArray[0][7] / 100;
-		baseDmg[1][0] = 12 * stat.player2.unit1.health / targetArray[1][0] / 100;
-		baseDmg[1][1] = 12 * stat.player2.unit2.health / targetArray[1][1] / 100;
-		baseDmg[1][2] = 12 * stat.player2.unit3.health / targetArray[1][2] / 100;
-		baseDmg[1][3] = 12 * stat.player2.unit4.health / targetArray[1][3] / 100;
-		baseDmg[1][4] = 12 * stat.player2.unit5.health / targetArray[1][4] / 100;
-		baseDmg[1][5] = 12 * stat.player2.unit6.health / targetArray[1][5] / 100;
-		baseDmg[1][6] = 12 * stat.player2.unit7.health / targetArray[1][6] / 100;
-		baseDmg[1][7] = 12 * stat.player2.unit8.health / targetArray[1][7] / 100;
+		baseDmg[0][0] = 24 * ((stat.player1.unit1.health / 2) + 50) / targetArray[0][0] / 100;
+		baseDmg[0][1] = 24 * ((stat.player1.unit2.health / 2) + 50) / targetArray[0][1] / 100;
+		baseDmg[0][2] = 24 * ((stat.player1.unit3.health / 2) + 50) / targetArray[0][2] / 100;
+		baseDmg[0][3] = 24 * ((stat.player1.unit4.health / 2) + 50) / targetArray[0][3] / 100;
+		baseDmg[0][4] = 24 * ((stat.player1.unit5.health / 2) + 50) / targetArray[0][4] / 100;
+		baseDmg[0][5] = 24 * ((stat.player1.unit6.health / 2) + 50) / targetArray[0][5] / 100;
+		baseDmg[0][6] = 24 * ((stat.player1.unit7.health / 2) + 50) / targetArray[0][6] / 100;
+		baseDmg[0][7] = 24 * ((stat.player1.unit8.health / 2) + 50) / targetArray[0][7] / 100;
+		baseDmg[1][0] = 24 * ((stat.player2.unit1.health / 2) + 50) / targetArray[1][0] / 100;
+		baseDmg[1][1] = 24 * ((stat.player2.unit2.health / 2) + 50) / targetArray[1][1] / 100;
+		baseDmg[1][2] = 24 * ((stat.player2.unit3.health / 2) + 50) / targetArray[1][2] / 100;
+		baseDmg[1][3] = 24 * ((stat.player2.unit4.health / 2) + 50) / targetArray[1][3] / 100;
+		baseDmg[1][4] = 24 * ((stat.player2.unit5.health / 2) + 50) / targetArray[1][4] / 100;
+		baseDmg[1][5] = 24 * ((stat.player2.unit6.health / 2) + 50) / targetArray[1][5] / 100;
+		baseDmg[1][6] = 24 * ((stat.player2.unit7.health / 2) + 50) / targetArray[1][6] / 100;
+		baseDmg[1][7] = 24 * ((stat.player2.unit8.health / 2) + 50) / targetArray[1][7] / 100;
 
 		// moves.player1[unit number][0] for move type
 		// moves.player1[unit number][1] for move target
@@ -478,6 +487,30 @@ $(function() {
 
 	function deadMoves(moves) {
 		//
+	}
+
+	function ifEnd(stat) {
+		if (stat.player1.unit1.health < 0 &&
+			stat.player1.unit2.health < 0 &&
+			stat.player1.unit3.health < 0 &&
+			stat.player1.unit4.health < 0 &&
+			stat.player1.unit5.health < 0 &&
+			stat.player1.unit6.health < 0 &&
+			stat.player1.unit7.health < 0 &&
+			stat.player1.unit8.health < 0) {
+			return 'p2';
+		} else if (stat.player2.unit1.health < 0 &&
+			stat.player2.unit2.health < 0 &&
+			stat.player2.unit3.health < 0 &&
+			stat.player2.unit4.health < 0 &&
+			stat.player2.unit5.health < 0 &&
+			stat.player2.unit6.health < 0 &&
+			stat.player2.unit7.health < 0 &&
+			stat.player2.unit8.health < 0) {
+			return 'p1';
+		} else {
+			return false;
+		}
 	}
 
 });

@@ -26,15 +26,17 @@
 
 ~~Add basic combat effect mechanics~~
 
-Add unit death
+~~Add unit death~~
 
-Add end of game 
-
-Add show moves page within stats 
+~~Add end of game~~
 
 **My MVP is complete as the core mechanics exist**
 
+Add show moves page within stats???
+
 Add more dynamic combat effects
+
+Add 
 
 Add stats non-select error and repeat
 
