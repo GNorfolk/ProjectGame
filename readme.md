@@ -46,11 +46,15 @@
 
 ~~Add board confirm move delay~~
 
-	Add can't attack or be attacked when dead
+~~Add can't attack or be attacked when dead~~
+
+ADD SUPPORT MOVES
+
+Add better step calculations
 
 Upgrade combat page
 
-Add better step calculations
+Upgrade combat input
 
 ------------------------------------------------------------------
 

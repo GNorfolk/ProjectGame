@@ -315,6 +315,8 @@ $(function() {
 
 	function combatCalc(stat, moves) {
 
+		moves = deadMoves(moves);
+
 		// units attacked lose support actions and creates array(s) for later use
 		moves = ifAttacked(moves);
 
@@ -529,7 +531,61 @@ $(function() {
 	}
 
 	function deadMoves(moves) {
-		//
+		
+		// if unit is dead ie health < 0
+		// set moves to be [-1,-1] ie invalid
+		var healthArray1 = [];
+		for (var key in unitStat.player1) {
+			if (unitStat.player1.hasOwnProperty(key)) {
+				//console.log(key + ' -> ' + unitStat.player1[key].health);
+				healthArray1.push(unitStat.player1[key].health);
+			}
+		} 
+
+		for (var i = 0; i < 8; i++) {
+			if (healthArray1[i] < 0) {
+				moves.player1[i] = [-1,-1];
+			}
+		}
+
+		// if somebody attacks healthless unit
+		// that attack is cancelled
+		for (var i = 0; i < 8; i++) {
+			// Check in healtharray where index is being attacked by p2
+			// if that health is less than 0 
+			// then invalidate attack
+			if (healthArray1[moves.player2[i][1]] < 0) {
+				moves.player2[i] = [-1,-1];
+			}
+		}
+
+		// The next part is the same but for player 2
+		var healthArray2 = [];
+		for (var key in unitStat.player2) {
+			if (unitStat.player2.hasOwnProperty(key)) {
+				//console.log(key + ' -> ' + unitStat.player2[key].health);
+				healthArray2.push(unitStat.player2[key].health);
+			}
+		} 
+
+		for (var i = 0; i < 8; i++) {
+			if (healthArray2[i] < 0) {
+				moves.player2[i] = [-1,-1];
+			}
+		}
+
+		// if somebody attacks healthless unit
+		// that attack is cancelled
+		for (var i = 0; i < 8; i++) {
+			// Check in healtharray where index is being attacked by p2
+			// if that health is less than 0 
+			// then invalidate attack
+			if (healthArray2[moves.player1[i][1]] < 0) {
+				moves.player1[i] = [-1,-1];
+			}
+		}
+
+		return moves;
 	}
 
 	function ifEnd(stat) {
@@ -701,20 +757,3 @@ $(function() {
 	}	
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
