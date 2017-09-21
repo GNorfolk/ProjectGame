@@ -48,11 +48,13 @@
 
 ~~Add can't attack or be attacked when dead~~
 
-ADD SUPPORT MOVES
+~~Add bonuses from unit comparisons~~
 
-Add better step calculations
+Add bonus for bowmen
 
-Upgrade combat page
+Add support moves 
+
+Add show moves page
 
 Upgrade combat input
 

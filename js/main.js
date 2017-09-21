@@ -341,9 +341,18 @@ $(function() {
 		baseDmg[1][6] = 24 * ((stat.player2.unit7.health / 2) + 50) / targetArray[1][6] / 100;
 		baseDmg[1][7] = 24 * ((stat.player2.unit8.health / 2) + 50) / targetArray[1][7] / 100;
 
-		// moves.player1[unit number][0] for move type
-		// moves.player1[unit number][1] for move target
-
+		var typeUnit = [[],[]];
+		for(var key in unitStat.player1) {
+			if (unitStat.player1.hasOwnProperty(key)) {
+				typeUnit[0].push(unitStat.player1[key].type)
+			}
+		}
+		for(var key in unitStat.player2) {
+			if (unitStat.player2.hasOwnProperty(key)) {
+				typeUnit[1].push(unitStat.player2[key].type)
+			}
+		}
+		
 		dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 		dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
@@ -353,25 +362,25 @@ $(function() {
 			// if unit i of p1 is attacking:
 			if (moves.player1[i][0] === 1) {
 				// the damage dealt in this one interations is added to dmg given by unit i of p1 
-				dmgGiven[0][i] += baseDmg[0][i];
+				dmgGiven[0][i] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]);
 				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i];
+				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]);
 
 				// this is the return damage, same as above
-				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]];
-				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]];
+				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]);;
+				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]);;
 			}
 			// this is the second loop that does the same thing for player 2's units
 			// if unit i of p2 is attacking:
 			if (moves.player2[i][0] === 1) {
 				// the damage dealt in this one interations is added to dmg given by unit i of p2 
-				dmgGiven[1][i] += baseDmg[1][i];
+				dmgGiven[1][i] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
 				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[0][moves.player2[i][1]] += baseDmg[1][i];
+				dmgTaken[0][moves.player2[i][1]] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
 
 				// this is the return damage, same as above
-				dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]];
-				dmgTaken[1][i] += baseDmg[0][moves.player2[i][1]];
+				dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
+				dmgTaken[1][i] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
 			}
 		}
 
@@ -588,6 +597,32 @@ $(function() {
 		return moves;
 	}
 
+	function typeDmg(attType, defType) {
+		if (attType === 'Swordsmen') {
+			if (defType === 'Spearmen') {
+				return 1.5;
+			} else {
+				return 1;
+			}
+		} else if (attType === 'Spearmen') {
+			if (defType === 'Horsemen') {
+				return 2;
+			} else {
+				return 1;
+			}
+		} else if (attType === 'Horsemen') {
+			if (defType === 'Swordsmen') {
+				return 1.5;
+			} else if (defType === 'Bowmen') {
+				return 1.5;
+			} else {
+				return 1;
+			}
+		} else {
+			return 1;
+		}
+	}
+
 	function ifEnd(stat) {
 		if (stat.player1.unit1.health < 0 &&
 			stat.player1.unit2.health < 0 &&
@@ -619,6 +654,27 @@ $(function() {
 				dmgGivenTotal[i][j] += dmgGiven[i][j];
 			}
 		}
+
+		var totalTurnDmgP1 = 0;
+		var totalTurnDmgP2 = 0;
+		var totalDmgP1 = 0;
+		var totalDmgP2 = 0;
+
+		for (var i = 0; i < 8; i++) {
+			totalDmgP1 += dmgGivenTotal[0][i];
+			totalDmgP2 += dmgGivenTotal[1][i];
+			totalTurnDmgP1 += dmgGiven[0][i];
+			totalTurnDmgP2 += dmgGiven[1][i];
+		}	
+
+		$('#leftStats .stat1').text(totalTurnDmgP1.toFixed() + ' damage');
+		$('#leftStats .stat2').text(totalTurnDmgP2.toFixed() + ' damage');
+		$('#leftStats .stat3').text(totalDmgP1.toFixed() + ' damage');
+		$('#leftStats .stat4').text(totalDmgP2.toFixed() + ' damage');
+		$('#rightStats .stat1').text(totalTurnDmgP2.toFixed() + ' damage');
+		$('#rightStats .stat2').text(totalTurnDmgP1.toFixed() + ' damage');
+		$('#rightStats .stat3').text(totalDmgP2.toFixed() + ' damage');
+		$('#rightStats .stat4').text(totalDmgP1.toFixed() + ' damage');
 
 		$('#leftStats .row1 .col1').text(dmgGiven[0][0].toFixed());
 		$('#leftStats .row2 .col1').text(dmgGiven[0][1].toFixed());
