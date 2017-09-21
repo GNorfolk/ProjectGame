@@ -50,13 +50,15 @@
 
 ~~Add bonuses from unit comparisons~~
 
-Add bonus for bowmen
+~~Add bonus for bowmen~~
 
-Add support moves 
+**Possible extra features:**
 
-Add show moves page
+Arrow User Interface to physically show attacks
 
-Upgrade combat input
+Unit clickables for unit moves
+
+Support moves to defend units
 
 ------------------------------------------------------------------
 

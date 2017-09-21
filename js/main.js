@@ -45,6 +45,8 @@ $(function() {
 	var dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 	var dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
+	var ifAttArray = [[],[]];
+
 	/////////////////////////////////////////////////////////////////////////////////////////
 
 	instrButton.on('click', function(event) {
@@ -362,13 +364,13 @@ $(function() {
 			// if unit i of p1 is attacking:
 			if (moves.player1[i][0] === 1) {
 				// the damage dealt in this one interations is added to dmg given by unit i of p1 
-				dmgGiven[0][i] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]);
+				dmgGiven[0][i] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
 				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]);
+				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
 
 				// this is the return damage, same as above
-				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]);;
-				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]);;
+				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
+				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
 			}
 			// this is the second loop that does the same thing for player 2's units
 			// if unit i of p2 is attacking:
@@ -431,6 +433,8 @@ $(function() {
 				targetArray[0][moves.player2[i][1]]++;
 			}
 		}
+
+		ifAttArray = targetArray;
 
 		// this blocks any support moves if the unit is attacked.
 		// cycles 0 though 7
@@ -617,6 +621,18 @@ $(function() {
 				return 1.5;
 			} else {
 				return 1;
+			}
+		} else {
+			return 1;
+		}
+	}
+
+	function bowDmg(attType, ifatt) {
+		if (attType === 'Bowmen') {
+			if (ifatt > 1) {
+				return 0.5;
+			} else {
+				return 2;
 			}
 		} else {
 			return 1;
