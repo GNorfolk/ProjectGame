@@ -408,8 +408,6 @@ if (parseInt($('#1b').val()) < 10) {
 		// units attacked lose support actions and creates array(s) for later use
 		moves = ifAttacked(moves);
 
-		console.log(moves);
-
 		var baseDmg = [[[],[],[],[],[],[],[],[]],[[],[],[],[],[],[],[],[]]]
 
 		// baseDmg[0][i] = 12 * stat.player1[i].health / targetArray[0][i] / 100;
@@ -446,31 +444,41 @@ if (parseInt($('#1b').val()) < 10) {
 		dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 		dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
+		console.log(dmgGiven);
+		console.log(dmgTaken);
+
 		// This adds all damage to two arrays declared above that tally damage given and received
 		// one 2-line code adds damage going outwards and the other adds the return
 		for (var i = 0; i < 8; i++) {
-			// if unit i of p1 is attacking:
 			if (moves.player1[i][0] === 1) {
-				// the damage dealt in this one interations is added to dmg given by unit i of p1 
-				dmgGiven[0][i] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
-				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
+				if (moves.player1[i][1] === -1) {
+					// Do nothing
+				} else {
+					// the damage dealt in this one interations is added to dmg given by unit i of p1 
+					dmgGiven[0][i] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
+					// the dmg in this interation is added to that taken by target unit
+					dmgTaken[1][moves.player1[i][1]] += baseDmg[0][i] * typeDmg(typeUnit[0][i], typeUnit[1][moves.player1[i][1]]) * bowDmg(typeUnit[0][i], ifAttArray[0][i]);
 
-				// this is the return damage, same as above
-				dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
-				dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
+					// this is the return damage, same as above
+					dmgGiven[1][moves.player1[i][1]] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
+					dmgTaken[0][i] += baseDmg[1][moves.player1[i][1]] * typeDmg(typeUnit[1][moves.player1[i][1]], typeUnit[0][i]) * bowDmg(typeUnit[1][moves.player1[i][1]], ifAttArray[1][moves.player1[i][1]]);
+				}
 			}
 			// this is the second loop that does the same thing for player 2's units
 			// if unit i of p2 is attacking:
 			if (moves.player2[i][0] === 1) {
-				// the damage dealt in this one interations is added to dmg given by unit i of p2 
-				dmgGiven[1][i] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
-				// the dmg in this interation is added to that taken by target unit
-				dmgTaken[0][moves.player2[i][1]] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
+				if (moves.player2[i][1] === -1) {
+					// Do nothing
+				} else {
+					// the damage dealt in this one interations is added to dmg given by unit i of p2 
+					dmgGiven[1][i] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
+					// the dmg in this interation is added to that taken by target unit
+					dmgTaken[0][moves.player2[i][1]] += baseDmg[1][i] * typeDmg(typeUnit[1][i], typeUnit[0][moves.player2[i][1]]);
 
-				// this is the return damage, same as above
-				dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
-				dmgTaken[1][i] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
+					// this is the return damage, same as above
+					dmgGiven[0][moves.player2[i][1]] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
+					dmgTaken[1][i] += baseDmg[0][moves.player2[i][1]] * typeDmg(typeUnit[0][moves.player2[i][1]], typeUnit[1][i]);
+				}
 			}
 		}
 
