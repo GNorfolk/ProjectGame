@@ -444,9 +444,6 @@ if (parseInt($('#1b').val()) < 10) {
 		dmgGiven = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 		dmgTaken = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
-		console.log(dmgGiven);
-		console.log(dmgTaken);
-
 		// This adds all damage to two arrays declared above that tally damage given and received
 		// one 2-line code adds damage going outwards and the other adds the return
 		for (var i = 0; i < 8; i++) {
