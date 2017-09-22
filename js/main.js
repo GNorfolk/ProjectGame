@@ -886,7 +886,7 @@ if (parseInt($('#1b').val()) < 10) {
 					unitImg = 'default';
 				}
 
-				$(string3).html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+				$(string3).html('<img class="iconImg" src="images/' + unitImg + '.png"></img>');
 			}
 
 			var string = '#unitr' + i;
@@ -916,7 +916,7 @@ if (parseInt($('#1b').val()) < 10) {
 					unitImg = 'default';
 				}
 
-				$(string3).html('<img class="iconImg" src="../images/' + unitImg + '.png"></img>');
+				$(string3).html('<img class="iconImg" src="images/' + unitImg + '.png"></img>');
 			}
 		}
 	}	
