@@ -48,6 +48,8 @@ $(function() {
 	var ifAttArray = [[],[]];
 
 	/////////////////////////////////////////////////////////////////////////////////////////
+	// This is where the buttons are placed that control user input                        //
+	/////////////////////////////////////////////////////////////////////////////////////////
 
 	instrButton.on('click', function(event) {
 		$(this).closest('#instructions').addClass('mainHidden');
@@ -155,25 +157,66 @@ $(function() {
 
 		if (counter === 0) {
 
+			if (parseInt($('#1b').val()) < 10) {
+				var b1 = parseInt($('#1b').val())
+			} else {
+				var b1 = -1;
+			}
+			if (parseInt($('#2b').val()) < 10) {
+				var b2 = parseInt($('#2b').val())
+			} else {
+				var b2 = -1;
+			}
+			if (parseInt($('#3b').val()) < 10) {
+				var b3 = parseInt($('#3b').val())
+			} else {
+				var b3 = -1;
+			}
+			if (parseInt($('#4b').val()) < 10) {
+				var b4 = parseInt($('#4b').val())
+			} else {
+				var b4 = -1;
+			}
+			if (parseInt($('#5b').val()) < 10) {
+				var b5 = parseInt($('#5b').val())
+			} else {
+				var b5 = -1;
+			}
+			if (parseInt($('#6b').val()) < 10) {
+				var b6 = parseInt($('#6b').val())
+			} else {
+				var b6 = -1;
+			}
+			if (parseInt($('#7b').val()) < 10) {
+				var b7 = parseInt($('#7b').val())
+			} else {
+				var b7 = -1;
+			}
+			if (parseInt($('#8b').val()) < 10) {
+				var b8 = parseInt($('#8b').val())
+			} else {
+				var b8 = -1;
+			}
+
 			battleMoves['player1'] = [
-				[parseInt($('#1a').val()),parseInt($('#1b').val())],
-				[parseInt($('#2a').val()),parseInt($('#2b').val())],
-				[parseInt($('#3a').val()),parseInt($('#3b').val())],
-				[parseInt($('#4a').val()),parseInt($('#4b').val())],
-				[parseInt($('#5a').val()),parseInt($('#5b').val())],
-				[parseInt($('#6a').val()),parseInt($('#6b').val())],
-				[parseInt($('#7a').val()),parseInt($('#7b').val())],
-				[parseInt($('#8a').val()),parseInt($('#8b').val())]
+				[parseInt($('#1a').val()),b1],
+				[parseInt($('#2a').val()),b2],
+				[parseInt($('#3a').val()),b3],
+				[parseInt($('#4a').val()),b4],
+				[parseInt($('#5a').val()),b5],
+				[parseInt($('#6a').val()),b6],
+				[parseInt($('#7a').val()),b7],
+				[parseInt($('#8a').val()),b8]
 			];
 
-			$('#1a').val('');
-			$('#2a').val('');
-			$('#3a').val('');
-			$('#4a').val('');
-			$('#5a').val('');
-			$('#6a').val('');
-			$('#7a').val('');
-			$('#8a').val('');
+			$('#1a').val(1);
+			$('#2a').val(1);
+			$('#3a').val(1);
+			$('#4a').val(1);
+			$('#5a').val(1);
+			$('#6a').val(1);
+			$('#7a').val(1);
+			$('#8a').val(1);
 			$('#1b').val('');
 			$('#2b').val('');
 			$('#3b').val('');
@@ -187,25 +230,68 @@ $(function() {
 
 			$('#topBoard h1').text('Player one, you may now engage in combat!');
 
+if (parseInt($('#1b').val()) < 10) {
+				var b1 = parseInt($('#1b').val())
+			} else {
+				var b1 = -1;
+			}
+			if (parseInt($('#2b').val()) < 10) {
+				var b2 = parseInt($('#2b').val())
+			} else {
+				var b2 = -1;
+			}
+			if (parseInt($('#3b').val()) < 10) {
+				var b3 = parseInt($('#3b').val())
+			} else {
+				var b3 = -1;
+			}
+			if (parseInt($('#4b').val()) < 10) {
+				var b4 = parseInt($('#4b').val())
+			} else {
+				var b4 = -1;
+			}
+			if (parseInt($('#5b').val()) < 10) {
+				var b5 = parseInt($('#5b').val())
+			} else {
+				var b5 = -1;
+			}
+			if (parseInt($('#6b').val()) < 10) {
+				var b6 = parseInt($('#6b').val())
+			} else {
+				var b6 = -1;
+			}
+			if (parseInt($('#7b').val()) < 10) {
+				var b7 = parseInt($('#7b').val())
+			} else {
+				var b7 = -1;
+			}
+			if (parseInt($('#8b').val()) < 10) {
+				var b8 = parseInt($('#8b').val())
+			} else {
+				var b8 = -1;
+			}
+
 			battleMoves['player2'] = [
-				[parseInt($('#1a').val()),parseInt($('#1b').val())],
-				[parseInt($('#2a').val()),parseInt($('#2b').val())],
-				[parseInt($('#3a').val()),parseInt($('#3b').val())],
-				[parseInt($('#4a').val()),parseInt($('#4b').val())],
-				[parseInt($('#5a').val()),parseInt($('#5b').val())],
-				[parseInt($('#6a').val()),parseInt($('#6b').val())],
-				[parseInt($('#7a').val()),parseInt($('#7b').val())],
-				[parseInt($('#8a').val()),parseInt($('#8b').val())]
+				[parseInt($('#1a').val()),b1],
+				[parseInt($('#2a').val()),b2],
+				[parseInt($('#3a').val()),b3],
+				[parseInt($('#4a').val()),b4],
+				[parseInt($('#5a').val()),b5],
+				[parseInt($('#6a').val()),b6],
+				[parseInt($('#7a').val()),b7],
+				[parseInt($('#8a').val()),b8]
 			];
 
-			$('#1a').val('');
-			$('#2a').val('');
-			$('#3a').val('');
-			$('#4a').val('');
-			$('#5a').val('');
-			$('#6a').val('');
-			$('#7a').val('');
-			$('#8a').val('');
+			// console.log($('#1b').val());
+
+			$('#1a').val(1);
+			$('#2a').val(1);
+			$('#3a').val(1);
+			$('#4a').val(1);
+			$('#5a').val(1);
+			$('#6a').val(1);
+			$('#7a').val(1);
+			$('#8a').val(1);
 			$('#1b').val('');
 			$('#2b').val('');
 			$('#3b').val('');
@@ -252,7 +338,7 @@ $(function() {
 	// put all functions below this line just for ease of use and all that jazz
 	// ************************************************************************
 
-	// This function adds info to the 
+	// This function adds objects to the main object 
 	function objectAdd(player, unitNum, unitType) {
 		if (player === 'p1') {
 			var string = 'unit' + unitNum;
@@ -321,6 +407,8 @@ $(function() {
 
 		// units attacked lose support actions and creates array(s) for later use
 		moves = ifAttacked(moves);
+
+		console.log(moves);
 
 		var baseDmg = [[[],[],[],[],[],[],[],[]],[[],[],[],[],[],[],[],[]]]
 
