@@ -886,7 +886,18 @@ if (parseInt($('#1b').val()) < 10) {
 					unitImg = 'default';
 				}
 
-				$(string3).html('<img class="iconImg" src="images/' + unitImg + '.png"></img>');
+				// $(string3).html('<img class="iconImg" src="images/' + unitImg + '.png"></img>');
+				if (unitImg === 'Bowmen') {
+					$(string3).html('<img class="iconImg" src="https://i.imgur.com/xdvbezX.png"></img>');
+				} else if (unitImg === 'Swordsmen') {
+					$(string3).html('<img class="iconImg" src="https://i.imgur.com/EtcjkN9.png"></img>');
+				} else if (unitImg === 'Horsemen') {
+					$(string3).html('<img class="iconImg" src="https://i.imgur.com/6ucc66t.png"></img>');
+				} else if (unitImg === 'Spearmen') {
+					$(string3).html('<img class="iconImg" src="https://i.imgur.com/JRtgYHV.png"></img>');
+				} else {
+					$(string3).html('<img class="iconImg" src="https://i.imgur.com/17ETWjC.jpg"></img>');
+				}
 			}
 
 			var string = '#unitr' + i;
