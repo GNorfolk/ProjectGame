@@ -1,4 +1,4 @@
-### ProjectGame AKA Stab Man
+### ProjectGame
 
 This is my web based game I developed during week three of my course at Sparta Global academy. 
 
@@ -13,4 +13,3 @@ To run the game online you just need to go to [this link](https://gnorfolk.githu
 To run the game locally you need to clone the repository located [here](https://github.com/GNorfolk/ProjectGame) into your own machine and then open the index.html file in the main directory. 
 
 ## Background mechanics
-
